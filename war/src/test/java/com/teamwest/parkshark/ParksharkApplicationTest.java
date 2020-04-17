@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ParksharkApplicationTest {
 
     @Test
-    void contextTest() {
+    void springBootTestContext() {
 
     }
 }
