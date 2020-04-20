@@ -15,7 +15,7 @@ public class Parkinglot {
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "PARKINGLOT_SEQ" )
     @SequenceGenerator(name = "PARKINGLOT_SEQ", sequenceName = "parkinglot_seq", allocationSize = 1)
-    private long id;
+    private int id;
 
     @Column(name = "name")
     private String name;
@@ -25,7 +25,7 @@ public class Parkinglot {
     private ParkinglotCategory parkinglotCategory;
 
     @Column(name = "capacity")
-    private long capacity;
+    private int capacity;
 
     @JoinColumn(name = "fk_person_id")
     @ManyToOne
@@ -36,18 +36,63 @@ public class Parkinglot {
 
     @Embedded
     private Price pricePerHour;
+
 //    TODO private Division division
 
 
     public Parkinglot() {
     }
 
-    public Parkinglot(String name, ParkinglotCategory parkinglotCategory, long capacity, Employee contactPerson, Address address, Price pricePerHour) {
+    public Parkinglot(String name, ParkinglotCategory parkinglotCategory, int capacity, Employee contactPerson, Address address, Price pricePerHour) {
         this.name = name;
         this.parkinglotCategory = parkinglotCategory;
         this.capacity = capacity;
         this.contactPerson = contactPerson;
         this.address = address;
         this.pricePerHour = pricePerHour;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public ParkinglotCategory getParkinglotCategory() {
+        return parkinglotCategory;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public Employee getContactPerson() {
+        return contactPerson;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public  String getStreetName(){
+        return address.getStreetName();
+    }
+
+    public int getHouseNumber(){
+        return address.getHouseNumber();
+    }
+
+    public int getPostCode(){
+        return address.getPostCode().getPostCode();
+    }
+
+    public String getCity(){
+        return address.getPostCode().getCity();
+    }
+
+    public Price getPricePerHour() {
+        return pricePerHour;
     }
 }
