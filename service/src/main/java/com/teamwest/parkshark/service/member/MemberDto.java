@@ -4,6 +4,7 @@ import com.teamwest.parkshark.domain.member.Address;
 import com.teamwest.parkshark.domain.member.PhoneNumber;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class MemberDto {
 
@@ -57,5 +58,25 @@ public class MemberDto {
 
     public LocalDate getRegistrationDate() {
         return registrationDate;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MemberDto memberDto = (MemberDto) o;
+        return Objects.equals(name, memberDto.name) &&
+                Objects.equals(mobileNumber, memberDto.mobileNumber) &&
+                Objects.equals(landlineNumber, memberDto.landlineNumber) &&
+                Objects.equals(address, memberDto.address) &&
+                Objects.equals(email, memberDto.email) &&
+                Objects.equals(licensePlate, memberDto.licensePlate) &&
+                Objects.equals(registrationDate, memberDto.registrationDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, mobileNumber, landlineNumber, address, email, licensePlate, registrationDate);
     }
 }

@@ -1,5 +1,6 @@
 package com.teamwest.parkshark.service.member;
 
+import com.teamwest.parkshark.domain.member.PostCode;
 import com.teamwest.parkshark.infrastructure.member.MemberRepository;
 import com.teamwest.parkshark.domain.member.Member;
 import org.springframework.stereotype.Service;
@@ -20,5 +21,7 @@ public class MemberService {
         Member savedMember = memberRepository.save(newMember);
         return memberMapper.memberToMemberDto(savedMember);
     }
+
+
 
 }

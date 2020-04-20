@@ -8,12 +8,16 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class MemberMapper {
+
     public Member createMemberDtoToMember(CreateMemberDto createMemberDto) {
         PhoneNumber mobileNumber = new PhoneNumber(createMemberDto.getCountryCodeMobile(), createMemberDto.getLocalNumberMobile());
         PhoneNumber landlineNumber = new PhoneNumber(createMemberDto.getCountryCodeLandline(), createMemberDto.getLocalNumberLandline());
-        Address address = new Address(createMemberDto.getStreetName(), createMemberDto.getHouseNumber(), new PostCode(createMemberDto.getPostCode(), createMemberDto.getCity()));
+        PostCode postCode = new PostCode(createMemberDto.getPostCode(), createMemberDto.getCity());
+        Address address = new Address(createMemberDto.getStreetName(), createMemberDto.getHouseNumber(), postCode);
         return new Member(createMemberDto.getName(), mobileNumber, landlineNumber, createMemberDto.getEmail(), address, createMemberDto.getLicensePlate(), createMemberDto.getRegistrationDate());
     }
+
+
 
     public MemberDto memberToMemberDto(Member savedMember) {
         return new MemberDto(savedMember.getId(),

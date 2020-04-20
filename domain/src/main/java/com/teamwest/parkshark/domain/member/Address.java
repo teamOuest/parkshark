@@ -3,6 +3,7 @@ package com.teamwest.parkshark.domain.member;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Embeddable
 @Table(name="member")
@@ -38,4 +39,18 @@ public class Address {
         return postCode;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Address address = (Address) o;
+        return houseNumber == address.houseNumber &&
+                Objects.equals(streetName, address.streetName) &&
+                Objects.equals(postCode, address.postCode);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(streetName, houseNumber, postCode);
+    }
 }

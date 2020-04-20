@@ -2,6 +2,7 @@ package com.teamwest.parkshark.domain.member;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Objects;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
@@ -86,4 +87,36 @@ public class Member{
     }
 
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Member member = (Member) o;
+        return Objects.equals(name, member.name) &&
+                Objects.equals(mobilePhoneNumber, member.mobilePhoneNumber) &&
+                Objects.equals(landlinePhoneNumber, member.landlinePhoneNumber) &&
+                Objects.equals(email, member.email) &&
+                Objects.equals(address, member.address) &&
+                Objects.equals(licensePlate, member.licensePlate) &&
+                Objects.equals(registrationDate, member.registrationDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, mobilePhoneNumber, landlinePhoneNumber, email, address, licensePlate, registrationDate);
+    }
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", mobilePhoneNumber=" + mobilePhoneNumber +
+                ", landlinePhoneNumber=" + landlinePhoneNumber +
+                ", email='" + email + '\'' +
+                ", address=" + address +
+                ", licensePlate='" + licensePlate + '\'' +
+                ", registrationDate=" + registrationDate +
+                '}';
+    }
 }

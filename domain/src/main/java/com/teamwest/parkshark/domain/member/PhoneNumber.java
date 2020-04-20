@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import java.util.Objects;
 
 @Embeddable
 @JsonAutoDetect
@@ -28,5 +29,20 @@ public class PhoneNumber {
 
     public int getLocalNumber() {
         return localNumber;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PhoneNumber that = (PhoneNumber) o;
+        return countryCode == that.countryCode &&
+                localNumber == that.localNumber;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(countryCode, localNumber);
     }
 }
