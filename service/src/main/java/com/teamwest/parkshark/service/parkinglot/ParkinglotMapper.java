@@ -6,6 +6,8 @@ import com.teamwest.parkshark.domain.member.Employee;
 import com.teamwest.parkshark.domain.member.PostCode;
 import com.teamwest.parkshark.domain.parkinglot.Parkinglot;
 import com.teamwest.parkshark.infrastructure.employee.EmployeeRepository;
+import com.teamwest.parkshark.service.parkinglot.Exceptions.IDnotFoundException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -17,8 +19,9 @@ public class ParkinglotMapper {
         this.employeeRepository = employeeRepository;
     }
 
-    public Parkinglot createParkinglotDtoToParkinglot(CreateParkinglotDto createParkinglotDto){
-        Employee employee = employeeRepository.findById(createParkinglotDto.getPerson_id()).orElse(null); //TODO implement exception
+    public Parkinglot toParkinglot(CreateParkinglotDto createParkinglotDto){
+        int contactPersonID = createParkinglotDto.getPerson_id();
+        Employee employee = employeeRepository.findById(contactPersonID).orElseThrow(()->new IDnotFoundException(contactPersonID));
         PostCode postCode = new PostCode(createParkinglotDto.getPostCode(), createParkinglotDto.getCity());
         Address address = new Address(createParkinglotDto.getStreetName(), createParkinglotDto.getHouseNumber(), postCode);
 
@@ -32,8 +35,9 @@ public class ParkinglotMapper {
         );
     }
 
-    public ParkinglotDto parkinglotToParkinglotDto(Parkinglot parkinglot){
-        return new ParkinglotDto(parkinglot.getId(),
+    public ParkinglotDto toParkinglotDto(Parkinglot parkinglot){
+        return new ParkinglotDto(
+                parkinglot.getId(),
                 parkinglot.getName(),
                 parkinglot.getParkinglotCategory(),
                 parkinglot.getCapacity(),
