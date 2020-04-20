@@ -2,18 +2,16 @@ package com.teamwest.parkshark.domain.member;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import javax.persistence.Embedded;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Embeddable
+@Table(name="member")
 @JsonAutoDetect
 public class Address {
 
-    @Column(name="streetName")
+    @Column(name="streetname")
     private String streetName;
-    @Column(name="houseNumber")
+    @Column(name="housenumber")
     private int houseNumber;
     @Embedded
     private PostCode postCode;

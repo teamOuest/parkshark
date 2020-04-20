@@ -4,24 +4,25 @@ package com.teamwest.parkshark.domain.member;
 import javax.persistence.*;
 
 @Entity
+@Table(name="member")
 public abstract class Person {
 
     @Id
-    @SequenceGenerator(allocationSize = 1, name = "PERSON_SEQ")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PERSON_SEQ")
+//    @SequenceGenerator(allocationSize = 1, name = "PERSON_SEQ")
+//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PERSON_SEQ")
     private int id;
     @Column(name = "name")
     private String name;
     @Embedded
     @AttributeOverrides({
-            @AttributeOverride(name = "countryCode", column = @Column(name = "countryCodeMobile")),
-            @AttributeOverride(name = "localNumber", column = @Column(name = "localNumberMobile"))
+            @AttributeOverride(name = "countryCode", column = @Column(name = "countrycodemobile")),
+            @AttributeOverride(name = "localNumber", column = @Column(name = "localnumbermobile"))
     })
     private PhoneNumber mobilePhoneNumber;
     @Embedded
     @AttributeOverrides({
-            @AttributeOverride(name = "countryCode", column = @Column(name = "countryCodeLandline")),
-            @AttributeOverride(name = "localNumber", column = @Column(name = "localNumberLandline"))
+            @AttributeOverride(name = "countryCode", column = @Column(name = "countrycodelandline")),
+            @AttributeOverride(name = "localNumber", column = @Column(name = "localnumberlandline"))
     })
     private PhoneNumber landlinePhoneNumber;
     @Column(name = "email")

@@ -9,7 +9,7 @@ import javax.persistence.Embeddable;
 @JsonAutoDetect
 public class PostCode {
 
-    @Column(name="postCode")
+    @Column(name="postcode")
     private int postCode;
     @Column(name="city")
     private String city;
