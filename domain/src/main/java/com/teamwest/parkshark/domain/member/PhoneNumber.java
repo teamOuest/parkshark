@@ -11,9 +11,7 @@ public class PhoneNumber {
     @Column(name="localNumber")
     private int localNumber;
 
-    public PhoneNumber(int countryCode, int actualNumber) {
-        this.countryCode = countryCode;
-        this.localNumber = actualNumber;
+    public PhoneNumber() {
     }
 
     public int getCountryCode() {

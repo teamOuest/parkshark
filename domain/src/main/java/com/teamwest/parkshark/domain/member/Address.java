@@ -16,11 +16,7 @@ public class Address {
     @Column(name="city")
     private String city;
 
-    public Address(String streetName, int houseNumber, int postCode, String city) {
-        this.streetName = streetName;
-        this.houseNumber = houseNumber;
-        this.postCode = postCode;
-        this.city = city;
+    public Address() {
     }
 
     public String getStreetName() {

@@ -20,12 +20,8 @@ public class Person {
     @Embedded
     private Address adress;
 
-    public Person(String name, PhoneNumber mobilePhoneNumber, PhoneNumber landlinePhoneNumber, String email, Address adress) {
-        this.name = name;
-        this.mobilePhoneNumber = mobilePhoneNumber;
-        this.landlinePhoneNumber = landlinePhoneNumber;
-        this.email = email;
-        this.adress = adress;
+    public Person() {
+
     }
 
     public String getName() {
