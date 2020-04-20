@@ -15,7 +15,7 @@ public class Parkinglot {
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "PARKINGLOT_SEQ" )
     @SequenceGenerator(name = "PARKINGLOT_SEQ", sequenceName = "parkinglot_seq", allocationSize = 1)
-    private long id;
+    private int id;
 
     @Column(name = "name")
     private String name;
@@ -25,7 +25,7 @@ public class Parkinglot {
     private ParkinglotCategory parkinglotCategory;
 
     @Column(name = "capacity")
-    private long capacity;
+    private int capacity;
 
     @JoinColumn(name = "fk_person_id")
     private Person contactPerson;
@@ -41,7 +41,7 @@ public class Parkinglot {
     public Parkinglot() {
     }
 
-    public Parkinglot(String name, ParkinglotCategory parkinglotCategory, long capacity, Person contactPerson, Address address, Price pricePerHour) {
+    public Parkinglot(String name, ParkinglotCategory parkinglotCategory, int capacity, Person contactPerson, Address address, Price pricePerHour) {
         this.name = name;
         this.parkinglotCategory = parkinglotCategory;
         this.capacity = capacity;
