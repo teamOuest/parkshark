@@ -4,7 +4,9 @@ import com.teamwest.parkshark.domain.member.Address;
 import com.teamwest.parkshark.domain.member.Member;
 import com.teamwest.parkshark.domain.member.PhoneNumber;
 import com.teamwest.parkshark.domain.member.PostCode;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MemberMapper {
     public Member createMemberDtoToMember(CreateMemberDto createMemberDto) {
         PhoneNumber mobileNumber = new PhoneNumber(createMemberDto.getCountryCodeMobile(), createMemberDto.getLocalNumberMobile());
