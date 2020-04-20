@@ -18,6 +18,6 @@ public class ParkinglotService {
     public ParkinglotDto createParkingLot(CreateParkinglotDto createParkinglotDto){
         Parkinglot newParkinglot = parkinglotMapper.createParkinglotDtoToParkinglot(createParkinglotDto);
         Parkinglot savedParkinglot = parkinglotRepository.save(newParkinglot);
-        return parkinglotMapper.parkinglotToParkinglotDto);
+        return parkinglotMapper.parkinglotToParkinglotDto(parkinglotRepository.findById(savedParkinglot.getId()).orElse(null)); //TODO exception to implement
     }
 }

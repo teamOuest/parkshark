@@ -19,4 +19,8 @@ public class Price {
         this.amount = amount;
         this.unit = unit;
     }
+
+    public double getAmount() {
+        return amount;
+    }
 }

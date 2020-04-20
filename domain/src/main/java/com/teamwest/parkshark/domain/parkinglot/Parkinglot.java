@@ -2,6 +2,7 @@ package com.teamwest.parkshark.domain.parkinglot;
 
 import com.teamwest.parkshark.domain.Price;
 import com.teamwest.parkshark.domain.member.Address;
+import com.teamwest.parkshark.domain.member.Employee;
 
 import javax.persistence.*;
 
@@ -35,6 +36,7 @@ public class Parkinglot {
 
     @Embedded
     private Price pricePerHour;
+
 //    TODO private Division division
 
 
@@ -48,5 +50,49 @@ public class Parkinglot {
         this.contactPerson = contactPerson;
         this.address = address;
         this.pricePerHour = pricePerHour;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public ParkinglotCategory getParkinglotCategory() {
+        return parkinglotCategory;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public Employee getContactPerson() {
+        return contactPerson;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public  String getStreetName(){
+        return address.getStreetName();
+    }
+
+    public int getHouseNumber(){
+        return address.getHouseNumber();
+    }
+
+    public int getPostCode(){
+        return address.getPostCode().getPostCode();
+    }
+
+    public String getCity(){
+        return address.getPostCode().getCity();
+    }
+
+    public Price getPricePerHour() {
+        return pricePerHour;
     }
 }
