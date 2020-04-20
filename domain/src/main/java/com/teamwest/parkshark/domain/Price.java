@@ -12,6 +12,9 @@ public class Price {
     @Column(name = "unit")
     private String unit;
 
+    public Price() {
+    }
+
     public Price(double amount, String unit) {
         this.amount = amount;
         this.unit = unit;

@@ -1,6 +1,8 @@
 package com.teamwest.parkshark.domain.parkinglots;
 
 import com.teamwest.parkshark.domain.Price;
+import com.teamwest.parkshark.domain.member.Address;
+import com.teamwest.parkshark.domain.member.Person;
 
 import javax.persistence.*;
 
@@ -35,6 +37,9 @@ public class Parkinglot {
     private Price pricePerHour;
 //    TODO private Division division
 
+
+    public Parkinglot() {
+    }
 
     public Parkinglot(String name, ParkinglotCategory parkinglotCategory, long capacity, Person contactPerson, Address address, Price pricePerHour) {
         this.name = name;
