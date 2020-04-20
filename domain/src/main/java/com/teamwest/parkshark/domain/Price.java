@@ -2,12 +2,13 @@ package com.teamwest.parkshark.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import java.math.BigDecimal;
 
 @Embeddable
 public class Price {
 
     @Column(name = "amount")
-    private double amount;
+    private BigDecimal amount;
 
     @Column(name = "unit")
     private String unit;
@@ -15,12 +16,12 @@ public class Price {
     public Price() {
     }
 
-    public Price(double amount, String unit) {
+    public Price(BigDecimal amount, String unit) {
         this.amount = amount;
         this.unit = unit;
     }
 
-    public double getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 }

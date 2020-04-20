@@ -2,6 +2,8 @@ package com.teamwest.parkshark.service.parkinglot;
 
 import com.teamwest.parkshark.domain.parkinglot.ParkinglotCategory;
 
+import java.math.BigDecimal;
+
 public class CreateParkinglotDto {
     private String name;
     private ParkinglotCategory parkinglotCategory;
@@ -11,9 +13,9 @@ public class CreateParkinglotDto {
     private int houseNumber;
     private int postCode;
     private String city;
-    private double amountInEuro;
+    private BigDecimal amountInEuro;
 
-    public CreateParkinglotDto(String name, ParkinglotCategory parkinglotCategory, int capacity, int person_id, String streetName, int houseNumber, int postCode, String city, double amountInEuro) {
+    public CreateParkinglotDto(String name, ParkinglotCategory parkinglotCategory, int capacity, int person_id, String streetName, int houseNumber, int postCode, String city, BigDecimal amountInEuro) {
         this.name = name;
         this.parkinglotCategory = parkinglotCategory;
         this.capacity = capacity;
@@ -57,7 +59,7 @@ public class CreateParkinglotDto {
         return city;
     }
 
-    public double getAmountInEuro() {
+    public BigDecimal getAmountInEuro() {
         return amountInEuro;
     }
 }

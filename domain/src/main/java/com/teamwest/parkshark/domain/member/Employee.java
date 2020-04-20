@@ -16,15 +16,15 @@ public class Employee {
 
     @Embedded
     @AttributeOverrides({
-            @AttributeOverride(name = "countryCode", column = @Column(name = "countryCodeMobile")),
-            @AttributeOverride(name = "localNumber", column = @Column(name = "localNumberMobile"))
+            @AttributeOverride(name = "countryCode", column = @Column(name = "countrycodemobile")),
+            @AttributeOverride(name = "localNumber", column = @Column(name = "localnumbermobile"))
     })
     private PhoneNumber mobilePhoneNumber;
 
     @Embedded
     @AttributeOverrides({
-            @AttributeOverride(name = "countryCode", column = @Column(name = "countryCodeLandline")),
-            @AttributeOverride(name = "localNumber", column = @Column(name = "localNumberLandline"))
+            @AttributeOverride(name = "countryCode", column = @Column(name = "countrycodelandline")),
+            @AttributeOverride(name = "localNumber", column = @Column(name = "localnumberlandline"))
     })
     private PhoneNumber landlinePhoneNumber;
 
