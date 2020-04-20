@@ -1,4 +1,4 @@
-package com.teamwest.parkshark.domain.parkinglots;
+package com.teamwest.parkshark.domain.parkinglot;
 
 import com.teamwest.parkshark.domain.Price;
 import com.teamwest.parkshark.domain.member.Address;
@@ -30,7 +30,7 @@ public class Parkinglot {
     @JoinColumn(name = "fk_person_id")
     private Person contactPerson;
 
-    @JoinColumn(name = "fk_address_id")
+    @Embedded
     private Address address;
 
     @Embedded

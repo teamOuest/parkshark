@@ -1,4 +1,4 @@
-package com.teamwest.parkshark.domain.parkinglots;
+package com.teamwest.parkshark.domain.parkinglot;
 
 import javax.persistence.Embeddable;
 
