@@ -2,7 +2,6 @@ package com.teamwest.parkshark.domain.parkinglot;
 
 import com.teamwest.parkshark.domain.Price;
 import com.teamwest.parkshark.domain.member.Address;
-import com.teamwest.parkshark.domain.member.Person;
 
 import javax.persistence.*;
 
@@ -28,7 +27,8 @@ public class Parkinglot {
     private int capacity;
 
     @JoinColumn(name = "fk_person_id")
-    private Person contactPerson;
+    @ManyToOne
+    private Employee contactPerson;
 
     @Embedded
     private Address address;
@@ -41,7 +41,7 @@ public class Parkinglot {
     public Parkinglot() {
     }
 
-    public Parkinglot(String name, ParkinglotCategory parkinglotCategory, int capacity, Person contactPerson, Address address, Price pricePerHour) {
+    public Parkinglot(String name, ParkinglotCategory parkinglotCategory, int capacity, Employee contactPerson, Address address, Price pricePerHour) {
         this.name = name;
         this.parkinglotCategory = parkinglotCategory;
         this.capacity = capacity;

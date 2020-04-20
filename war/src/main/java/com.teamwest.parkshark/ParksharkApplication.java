@@ -1,5 +1,6 @@
 package com.teamwest.parkshark;
 
+import com.teamwest.parkshark.api.member.MemberController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
@@ -12,6 +13,9 @@ public class ParksharkApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ParksharkApplication.class, args);
+
+
+
 	}
 
 }

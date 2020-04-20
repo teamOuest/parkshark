@@ -2,9 +2,11 @@ package com.teamwest.parkshark.domain.member;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.time.LocalDate;
 
 @Entity
+@Table(name="member")
 public class Member extends Person{
 
     @Column(name="licensePlate")
