@@ -26,6 +26,6 @@ public class ParkinglotController {
 
     @GetMapping(produces="application/json")
     public String dummy(){
-        return "dummy response";
+        return "dummy dummy response";
     }
 }

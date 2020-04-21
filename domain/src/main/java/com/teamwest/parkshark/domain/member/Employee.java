@@ -1,14 +1,17 @@
 package com.teamwest.parkshark.domain.member;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import static javax.persistence.GenerationType.SEQUENCE;
+
 
 @Entity
 @Table(name="employee")
 public class Employee {
 
     @Id
-    @SequenceGenerator(allocationSize = 1, name = "PERSON_SEQ")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PERSON_SEQ")
+    @GeneratedValue(strategy = SEQUENCE, generator = "EMPLOYEE_SEQ")
+    @SequenceGenerator(sequenceName = "employee_id_seq", allocationSize = 1, name = "EMPLOYEE_SEQ")
     private int id;
 
     @Column(name = "name")
@@ -29,6 +32,7 @@ public class Employee {
     private PhoneNumber landlinePhoneNumber;
 
     @Column(name = "email")
+    @Email
     private String email;
 
     @Embedded
