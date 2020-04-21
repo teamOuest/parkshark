@@ -1,6 +1,7 @@
 package com.teamwest.parkshark.domain.member;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -30,6 +31,7 @@ public class Member{
     })
     private PhoneNumber landlinePhoneNumber;
     @Column(name = "email")
+    @Email
     private String email;
     @Embedded
     private Address address;
