@@ -2,15 +2,20 @@ package com.teamwest.parkshark.api.parkinglot;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.teamwest.parkshark.infrastructure.parkinglot.ParkinglotRepository;
+import com.teamwest.parkshark.service.member.MemberService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-//@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest
 class ParkinglotControllerTest {
+
+//    @Autowired
+//    private MemberService memberService;
 
 //    @Autowired
 //    private MockMvc mockMvc;

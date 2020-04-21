@@ -1,4 +1,4 @@
-package com.teamwest.parkshark.api;
+package com.teamwest.parkshark;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
