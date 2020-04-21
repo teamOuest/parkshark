@@ -23,4 +23,9 @@ public class ParkinglotController {
     public ParkinglotDto createParkinglot(@RequestBody CreateParkinglotDto createParkinglotDto){
         return parkinglotService.createParkingLot(createParkinglotDto);
     }
+
+    @GetMapping(produces="application/json")
+    public String dummy(){
+        return "dummy response";
+    }
 }
