@@ -1,4 +1,4 @@
-package com.teamwest.parkshark;
+package com.teamwest.parkshark.service.parkinglot;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
