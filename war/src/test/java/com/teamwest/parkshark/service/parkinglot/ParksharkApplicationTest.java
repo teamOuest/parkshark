@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.IOException;
 import java.net.http.HttpResponse;
+import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,11 +23,19 @@ class ParksharkApplicationTest {
     }
 
     @Test
-    public void atTest() throws IOException
+    public void ResponseCodeForParkingLotIsCorrect() throws IOException
     {
         HttpUriRequest request = new HttpGet("http://localhost:8080/parkinglot");
         StatusLine statusLine = HttpClientBuilder.create().build().execute(request).getStatusLine();
         System.out.println(statusLine.getStatusCode());
         assertEquals(HttpStatus.SC_OK, statusLine.getStatusCode());
     }
+
+    @Test
+    public void ResponsCodeForParkingLotIsDummyDummyTest() throws  IOException{
+        HttpUriRequest request = new HttpGet("http://localhost:8080/parkinglot");
+        String contentType = (Arrays.toString(HttpClientBuilder.create().build().execute(request).getFirstHeader("Content-Type").getElements()));
+        assertEquals(contentType, "[application/json]");
+    }
+
 }
