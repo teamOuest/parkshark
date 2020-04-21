@@ -20,8 +20,8 @@ public class Parkinglot {
     @Column(name = "name")
     private String name;
 
-    @Column
     @Enumerated(EnumType.STRING)
+    @Column (name = "category")
     private ParkinglotCategory parkinglotCategory;
 
     @Column(name = "capacity")
