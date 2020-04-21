@@ -76,9 +76,7 @@ public class Parkinglot {
         return address;
     }
 
-    public  String getStreetName(){
-        return address.getStreetName();
-    }
+    public  String getStreetName(){ return address.getStreetName(); }
 
     public int getHouseNumber(){
         return address.getHouseNumber();

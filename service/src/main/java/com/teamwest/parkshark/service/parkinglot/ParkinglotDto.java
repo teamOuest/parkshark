@@ -3,6 +3,7 @@ package com.teamwest.parkshark.service.parkinglot;
 import com.teamwest.parkshark.domain.parkinglot.ParkinglotCategory;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 public class ParkinglotDto {
     private int id;
@@ -14,9 +15,9 @@ public class ParkinglotDto {
     private int houseNumber;
     private int postCode;
     private String city;
-    private BigDecimal amountInEuro;
+    private double amountInEuro;
 
-    public ParkinglotDto(int id, String name, ParkinglotCategory parkinglotCategory, int capacity, int person_id, String streetName, int houseNumber, int postCode, String city, BigDecimal amountInEuro) {
+    public ParkinglotDto(int id, String name, ParkinglotCategory parkinglotCategory, int capacity, int person_id, String streetName, int houseNumber, int postCode, String city, double amountInEuro) {
         this.id = id;
         this.name = name;
         this.parkinglotCategory = parkinglotCategory;
@@ -65,9 +66,45 @@ public class ParkinglotDto {
         return city;
     }
 
-    public BigDecimal getAmountInEuro() {
+    public double getAmountInEuro() {
         return amountInEuro;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ParkinglotDto that = (ParkinglotDto) o;
+        return id == that.id &&
+                capacity == that.capacity &&
+                person_id == that.person_id &&
+                houseNumber == that.houseNumber &&
+                postCode == that.postCode &&
+                Double.compare(that.amountInEuro, amountInEuro) == 0 &&
+                Objects.equals(name, that.name) &&
+                parkinglotCategory == that.parkinglotCategory &&
+                Objects.equals(streetName, that.streetName) &&
+                Objects.equals(city, that.city);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, parkinglotCategory, capacity, person_id, streetName, houseNumber, postCode, city, amountInEuro);
+    }
+
+    @Override
+    public String toString() {
+        return "ParkinglotDto{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", parkinglotCategory=" + parkinglotCategory +
+                ", capacity=" + capacity +
+                ", person_id=" + person_id +
+                ", streetName='" + streetName + '\'' +
+                ", houseNumber=" + houseNumber +
+                ", postCode=" + postCode +
+                ", city='" + city + '\'' +
+                ", amountInEuro=" + amountInEuro +
+                '}';
+    }
 }

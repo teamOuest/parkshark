@@ -15,8 +15,6 @@ public class ParkinglotExceptionHandler {
 
     private Logger logger = LoggerFactory.getLogger(ParkinglotExceptionHandler.class);
 
-
-
     @ExceptionHandler(EmptyResultDataAccessException.class)
     protected void couldNotFind(EmptyResultDataAccessException exception, HttpServletResponse response) throws IOException {
         logger.info(exception.getMessage(), exception);

@@ -7,7 +7,6 @@ import com.teamwest.parkshark.domain.member.PostCode;
 import com.teamwest.parkshark.domain.parkinglot.Parkinglot;
 import com.teamwest.parkshark.infrastructure.employee.EmployeeRepository;
 import com.teamwest.parkshark.service.parkinglot.Exceptions.IDnotFoundException;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Component;
 
 @Component

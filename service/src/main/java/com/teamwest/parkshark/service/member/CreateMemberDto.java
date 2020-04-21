@@ -33,7 +33,6 @@ public class CreateMemberDto {
         this.postCode = postCode;
         this.city = city;
         this.licensePlate = licensePlate;
-        this.registrationDate = registrationDate;
     }
 
     public String getName() {

@@ -6,6 +6,8 @@ import com.teamwest.parkshark.domain.member.PhoneNumber;
 import com.teamwest.parkshark.domain.member.PostCode;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+
 @Component
 public class MemberMapper {
 
@@ -14,7 +16,7 @@ public class MemberMapper {
         PhoneNumber landlineNumber = new PhoneNumber(createMemberDto.getCountryCodeLandline(), createMemberDto.getLocalNumberLandline());
         PostCode postCode = new PostCode(createMemberDto.getPostCode(), createMemberDto.getCity());
         Address address = new Address(createMemberDto.getStreetName(), createMemberDto.getHouseNumber(), postCode);
-        return new Member(createMemberDto.getName(), mobileNumber, landlineNumber, createMemberDto.getEmail(), address, createMemberDto.getLicensePlate(), createMemberDto.getRegistrationDate());
+        return new Member(createMemberDto.getName(), mobileNumber, landlineNumber, createMemberDto.getEmail(), address, createMemberDto.getLicensePlate(), LocalDate.now());
     }
 
 
