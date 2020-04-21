@@ -26,7 +26,7 @@ class MemberMapperTest {
                 3000,
                 "Leuven",
                 "ABC123",
-                LocalDate.parse("2020-04-20"));
+                LocalDate.now());
         Member member = new Member("Test",
                 new PhoneNumber(32,
                         489354392),
@@ -38,7 +38,7 @@ class MemberMapperTest {
                         new PostCode(3000,
                                 "Leuven")),
                 "ABC123",
-                LocalDate.parse("2020-04-20"));
+                LocalDate.now());
         MemberMapper memberMapper = new MemberMapper();
         Assertions.assertEquals(member, (memberMapper.createMemberDtoToMember(createMemberDto)));
     }
@@ -54,7 +54,7 @@ class MemberMapperTest {
                         new PostCode(3000,
                                 "Leuven")),
                 "ABC123",
-                LocalDate.parse("2020-04-20"));
+                LocalDate.now());
         MemberDto memberDto = new MemberDto(1,
                 "Test",
                 new PhoneNumber(32, 489354392),
@@ -62,7 +62,7 @@ class MemberMapperTest {
                 new Address("Diestsestraat", 15, new PostCode(3000, "Leuven")),
                 "tombellens@hotmail.com",
                 "ABC123",
-                LocalDate.parse("2020-04-20"));
+                LocalDate.now());
         MemberMapper mapper = new MemberMapper();
         Assertions.assertEquals(memberDto, mapper.memberToMemberDto(member));
     }
