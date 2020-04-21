@@ -13,9 +13,9 @@ public class CreateParkinglotDto {
     private int houseNumber;
     private int postCode;
     private String city;
-    private BigDecimal amountInEuro;
+    private double amountInEuro;
 
-    public CreateParkinglotDto(String name, ParkinglotCategory parkinglotCategory, int capacity, int person_id, String streetName, int houseNumber, int postCode, String city, BigDecimal amountInEuro) {
+    public CreateParkinglotDto(String name, ParkinglotCategory parkinglotCategory, int capacity, int person_id, String streetName, int houseNumber, int postCode, String city, double amountInEuro) {
         this.name = name;
         this.parkinglotCategory = parkinglotCategory;
         this.capacity = capacity;
@@ -59,7 +59,7 @@ public class CreateParkinglotDto {
         return city;
     }
 
-    public BigDecimal getAmountInEuro() {
+    public double getAmountInEuro() {
         return amountInEuro;
     }
 }
