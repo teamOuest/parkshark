@@ -1,36 +1,69 @@
 package com.teamwest.parkshark.api.parkinglot;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.teamwest.parkshark.infrastructure.parkinglot.ParkinglotRepository;
-import com.teamwest.parkshark.service.member.MemberService;
+import com.teamwest.parkshark.service.parkinglot.CreateParkinglotDto;
+import com.teamwest.parkshark.service.parkinglot.ParkinglotDto;
+import com.teamwest.parkshark.service.parkinglot.ParkinglotService;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.web.servlet.MockMvc;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static com.teamwest.parkshark.domain.parkinglot.ParkinglotCategory.ABOVE_GROUND_BUILDING;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.when;
 
 @SpringBootTest
 class ParkinglotControllerTest {
 
-//    @Autowired
-//    private MemberService memberService;
 
-//    @Autowired
-//    private MockMvc mockMvc;
-//
-//    @Autowired
-//    private ObjectMapper objectMapper;
-//
-//    @Autowired
-//    private ParkinglotRepository parkinglotRepository;
+    @Mock
+    private ParkinglotService parkinglotService;
+
+    @InjectMocks
+    private ParkinglotController parkinglotController;
+
 
 
     @Test
-    void checkIfSpringBootIsCorrectlyConfigured() {
+    void contextTest() {
         // This test will fail when there are 'obvious' problems with the Spring application context, like a missing bean.
     }
 
+    @Test
+    void createParkinglotBehaviourTest() {
+        //Given
+        String url = "/parkinglot";
+        CreateParkinglotDto createParkinglotDto = new CreateParkinglotDto(
+                                                        "name",
+                                                        ABOVE_GROUND_BUILDING,
+                                                        150,
+                                                        1,
+                                                        "street",
+                                                        1,
+                                                        123,
+                                                        "city",
+                                                        12.5);
 
+        ParkinglotDto parkinglotDto = new ParkinglotDto(
+                                        111,
+                                        "name",
+                                        ABOVE_GROUND_BUILDING,
+                                        150,
+                                        1,
+                                        "street",
+                                        1,
+                                        123,
+                                        "city",
+                                        12.5);
+
+        //When
+        when(parkinglotService.createParkingLot(createParkinglotDto)).thenReturn(parkinglotDto);
+
+
+        //Then
+
+        assertThat(parkinglotController.createParkinglot(createParkinglotDto)).isEqualTo(parkinglotDto);
+
+
+    }
 }
