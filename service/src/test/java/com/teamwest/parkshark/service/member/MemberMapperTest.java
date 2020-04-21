@@ -11,6 +11,7 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
 class MemberMapperTest {
     @Test
     void givenACreateMemberDto_ShouldReturnRightMember() {
@@ -45,10 +46,8 @@ class MemberMapperTest {
     @Test
     void memberToMemberDto_returnsCorrectDto() {
         Member member = new Member("Test",
-                new PhoneNumber(32,
-                        489354392),
-                new PhoneNumber(32,
-                        23568463),
+                new PhoneNumber(32, 489354392),
+                new PhoneNumber(32, 23568463),
                 "tombellens@hotmail.com",
                 new Address("Diestsestraat",
                         15,
