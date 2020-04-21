@@ -1,13 +1,10 @@
 package com.teamwest.parkshark.api.member;
 
-import com.teamwest.parkshark.api.parkinglot.ParkinglotExceptionHandler;
-import org.hibernate.exception.ConstraintViolationException;
-import org.postgresql.util.PSQLException;
+
+import javax.validation.ConstraintViolationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -25,6 +22,12 @@ public class MemberExceptionHandler {
     protected void duplicateEntry(DataIntegrityViolationException exception, HttpServletResponse response) throws IOException {
         logger.info(exception.getMessage(), exception);
         response.sendError(BAD_REQUEST.value(), "boodschap");
+    }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    protected void invalidInputData(ConstraintViolationException exception, HttpServletResponse response) throws IOException {
+        logger.info(exception.getMessage(), exception);
+        response.sendError(BAD_REQUEST.value(), "Here's what you did wrong (you idiot): " + exception.getMessage());
     }
 
 

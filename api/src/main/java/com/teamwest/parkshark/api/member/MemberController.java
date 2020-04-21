@@ -1,8 +1,10 @@
 package com.teamwest.parkshark.api.member;
 
 import com.teamwest.parkshark.service.member.CreateMemberDto;
+import com.teamwest.parkshark.service.member.EmailNotValidException;
 import com.teamwest.parkshark.service.member.MemberDto;
 import com.teamwest.parkshark.service.member.MemberService;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -30,6 +32,8 @@ public class MemberController {
     public MemberDto registerMember(@RequestBody CreateMemberDto createMemberDto){
             return memberService.registerMember(createMemberDto);
     }
+
+
 
 
 
