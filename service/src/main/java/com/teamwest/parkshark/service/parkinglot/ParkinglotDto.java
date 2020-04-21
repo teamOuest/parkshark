@@ -91,4 +91,20 @@ public class ParkinglotDto {
     public int hashCode() {
         return Objects.hash(id, name, parkinglotCategory, capacity, person_id, streetName, houseNumber, postCode, city, amountInEuro);
     }
+
+    @Override
+    public String toString() {
+        return "ParkinglotDto{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", parkinglotCategory=" + parkinglotCategory +
+                ", capacity=" + capacity +
+                ", person_id=" + person_id +
+                ", streetName='" + streetName + '\'' +
+                ", houseNumber=" + houseNumber +
+                ", postCode=" + postCode +
+                ", city='" + city + '\'' +
+                ", amountInEuro=" + amountInEuro +
+                '}';
+    }
 }
