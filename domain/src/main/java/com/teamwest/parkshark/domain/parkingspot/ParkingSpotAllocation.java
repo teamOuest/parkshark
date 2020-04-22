@@ -1,6 +1,5 @@
 package com.teamwest.parkshark.domain.parkingspot;
 
-import com.teamwest.parkshark.domain.member.Member;
 import com.teamwest.parkshark.domain.parkinglot.Parkinglot;
 
 import javax.persistence.*;
@@ -18,16 +17,14 @@ public class ParkingSpotAllocation {
     @SequenceGenerator(name = "PARKINGSPOT_SEQ", sequenceName = "parkingspot_allocation_seq", allocationSize = 1)
     private int id;
 
-    @JoinColumn(name = "member_id")
-    @ManyToOne
-    private Member member;
+    @Column(name = "member_id")
+    private int memberID;
 
     @Column(name = "licenseplate")
     private String licensePlate;
 
-    @JoinColumn(name = "parkinglot_id")
-    @ManyToOne
-    private Parkinglot parkinglot;
+    @Column(name = "parkinglot_id")
+    private int parkinglotID;
 
     @Column(name = "starttime")
     private LocalDateTime startTime;
@@ -41,11 +38,10 @@ public class ParkingSpotAllocation {
     public ParkingSpotAllocation() {
     }
 
-    public ParkingSpotAllocation(int id, Member member, String licensePlate, Parkinglot parkinglot, LocalDateTime starttime, LocalDateTime endtime, boolean statusIsActve) {
-        this.id = id;
-        this.member = member;
+    public ParkingSpotAllocation(int memberID, String licensePlate, int parkinglotID, LocalDateTime starttime, LocalDateTime endtime, boolean statusIsActve) {
+        this.memberID = memberID;
         this.licensePlate = licensePlate;
-        this.parkinglot = parkinglot;
+        this.parkinglotID = parkinglotID;
         this.startTime = starttime;
         this.endTime = endtime;
         this.statusIsActive = statusIsActve;

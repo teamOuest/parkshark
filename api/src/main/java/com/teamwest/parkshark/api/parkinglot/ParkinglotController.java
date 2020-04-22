@@ -4,6 +4,8 @@ import com.teamwest.parkshark.service.parkinglot.CreateParkinglotDto;
 import com.teamwest.parkshark.service.parkinglot.ParkinglotDto;
 import com.teamwest.parkshark.service.parkinglot.ParkinglotMinimalDto;
 import com.teamwest.parkshark.service.parkinglot.ParkinglotService;
+import com.teamwest.parkshark.service.parkingspot.ParkingSpotAllocationService;
+import com.teamwest.parkshark.service.parkingspot.StartPSallocationDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -15,10 +17,12 @@ import java.util.List;
 public class ParkinglotController {
 
     ParkinglotService parkinglotService;
+    ParkingSpotAllocationService parkingSpotAllocationService;
 
     @Autowired
-    public ParkinglotController(ParkinglotService parkinglotService) {
+    public ParkinglotController(ParkinglotService parkinglotService, ParkingSpotAllocationService parkingSpotAllocationService) {
         this.parkinglotService = parkinglotService;
+        this.parkingSpotAllocationService = parkingSpotAllocationService;
     }
 
     @PostMapping(consumes="application/json", produces="application/json")
@@ -31,4 +35,11 @@ public class ParkinglotController {
     public List<ParkinglotMinimalDto> getAllParkingLots(){
         return parkinglotService.getAllParkingLots();
     }
+
+    @PostMapping(consumes="application/json", produces="application/json", path = "{id}/startparkingspotallocation")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void startParkingSpotAllocation(@RequestBody StartPSallocationDto startPSallocationDto, @PathVariable int parkinglotID){
+//        return parkingSpotAllocationService.startPSallocation(startPSallocationDto,parkinglotID);//TODO
+    }
+
 }
