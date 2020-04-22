@@ -45,4 +45,9 @@ public class PhoneNumber {
     public int hashCode() {
         return Objects.hash(countryCode, localNumber);
     }
+
+    @Override
+    public String toString() {
+        return "+" + countryCode + "/" + localNumber;
+    }
 }

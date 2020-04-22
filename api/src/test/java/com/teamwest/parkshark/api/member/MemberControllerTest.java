@@ -1,6 +1,7 @@
 package com.teamwest.parkshark.api.member;
 
 import com.teamwest.parkshark.domain.member.Address;
+import com.teamwest.parkshark.domain.member.MembershipLevel;
 import com.teamwest.parkshark.domain.member.PhoneNumber;
 import com.teamwest.parkshark.domain.member.PostCode;
 import com.teamwest.parkshark.service.member.CreateMemberDto;
@@ -52,7 +53,8 @@ class MemberControllerTest {
                 3000,
                 "Leuven",
                 "ABC123",
-                LocalDate.now());
+                LocalDate.now(),
+                MembershipLevel.BRONZE);
 
         WebTestClient.ResponseSpec response = this.webTestClient.post()
                 .uri("/members")
@@ -78,7 +80,8 @@ class MemberControllerTest {
                 3000,
                 "Leuven",
                 "ABC123",
-                LocalDate.now());
+                LocalDate.now(),
+                MembershipLevel.BRONZE);
 
         MemberDto expectedMemberDto = new MemberDto(
                 0,
@@ -94,7 +97,8 @@ class MemberControllerTest {
                                 "Leuven")),
                 "tombellens@hotmail.com",
                 "ABC123",
-                LocalDate.now());
+                LocalDate.now(),
+                MembershipLevel.BRONZE);
 
         //when
         WebTestClient.ResponseSpec response = this.webTestClient.post()
@@ -144,7 +148,8 @@ class MemberControllerTest {
                 3000,
                 "Leuven",
                 "ABC123",
-                LocalDate.now());
+                LocalDate.now(),
+                MembershipLevel.BRONZE);
         this.webTestClient.post()
                 .uri("/members")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -173,7 +178,8 @@ class MemberControllerTest {
                 3000,
                 "Leuven",
                 "ABC123",
-                LocalDate.now());
+                LocalDate.now(),
+                MembershipLevel.BRONZE);
         this.webTestClient.post()
                 .uri("/members")
                 .contentType(MediaType.APPLICATION_JSON)
