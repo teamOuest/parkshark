@@ -41,9 +41,13 @@ public class Member{
     @Column(name="registrationdate")
     private LocalDate registrationDate;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name="membershiplevel")
+    private MembershipLevel membershipLevel;
+
     public Member(){}
 
-    public Member(String name, PhoneNumber mobilePhoneNumber, PhoneNumber landlinePhoneNumber, String email, Address address, String licensePlate, LocalDate registrationDate) {
+    public Member(String name, PhoneNumber mobilePhoneNumber, PhoneNumber landlinePhoneNumber, String email, Address address, String licensePlate, LocalDate registrationDate, MembershipLevel membershipLevel) {
         this.id = id;
         this.name = name;
         this.mobilePhoneNumber = mobilePhoneNumber;
@@ -52,6 +56,7 @@ public class Member{
         this.address = address;
         this.licensePlate = licensePlate;
         this.registrationDate = registrationDate;
+        this.membershipLevel = membershipLevel;
     }
 
     public int getId() {
@@ -86,6 +91,9 @@ public class Member{
         return registrationDate;
     }
 
+    public MembershipLevel getMembershipLevel() {
+        return membershipLevel;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -98,12 +106,14 @@ public class Member{
                 Objects.equals(email, member.email) &&
                 Objects.equals(address, member.address) &&
                 Objects.equals(licensePlate, member.licensePlate) &&
-                Objects.equals(registrationDate, member.registrationDate);
+                Objects.equals(registrationDate, member.registrationDate) &&
+                Objects.equals(membershipLevel, member.membershipLevel);
+
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, mobilePhoneNumber, landlinePhoneNumber, email, address, licensePlate, registrationDate);
+        return Objects.hash(name, mobilePhoneNumber, landlinePhoneNumber, email, address, licensePlate, registrationDate, membershipLevel);
     }
 
     @Override
@@ -117,6 +127,7 @@ public class Member{
                 ", address=" + address +
                 ", licensePlate='" + licensePlate + '\'' +
                 ", registrationDate=" + registrationDate +
+                ", membershipLevel=" + membershipLevel +
                 '}';
     }
 }

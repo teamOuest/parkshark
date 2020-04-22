@@ -9,6 +9,9 @@ import com.teamwest.parkshark.infrastructure.employee.EmployeeRepository;
 import com.teamwest.parkshark.service.parkinglot.Exceptions.IDnotFoundException;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Component
 public class ParkinglotMapper {
 
@@ -34,6 +37,12 @@ public class ParkinglotMapper {
         );
     }
 
+    public List<ParkinglotMinimalDto> toParkinglotMinimalDto(List<Parkinglot> parkinglotList){
+        return parkinglotList.stream()
+                            .map(parkingLot -> toParkinglotMinimalDto(parkingLot))
+                            .collect(Collectors.toList());
+    }
+
     public ParkinglotDto toParkinglotDto(Parkinglot parkinglot){
         return new ParkinglotDto(
                 parkinglot.getId(),
@@ -47,5 +56,14 @@ public class ParkinglotMapper {
                 parkinglot.getCity(),
                 parkinglot.getPricePerHour().getAmount()
         );
+    }
+
+    public ParkinglotMinimalDto toParkinglotMinimalDto(Parkinglot parkinglot){
+        return new ParkinglotMinimalDto(
+                parkinglot.getId(),
+                parkinglot.getName(),
+                parkinglot.getCapacity(),
+                parkinglot.getContactPerson().getEmail(),
+                "" + parkinglot.getContactPerson().getMobilePhoneNumber());
     }
 }

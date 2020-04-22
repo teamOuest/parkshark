@@ -1,9 +1,6 @@
 package com.teamwest.parkshark.service.member;
 
-import com.teamwest.parkshark.domain.member.Address;
-import com.teamwest.parkshark.domain.member.Member;
-import com.teamwest.parkshark.domain.member.PhoneNumber;
-import com.teamwest.parkshark.domain.member.PostCode;
+import com.teamwest.parkshark.domain.member.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -24,7 +21,8 @@ class MemberMapperTest {
                 3000,
                 "Leuven",
                 "ABC123",
-                LocalDate.now());
+                LocalDate.now(),
+        MembershipLevel.BRONZE);
         Member member = new Member("Test",
                 new PhoneNumber(32,
                         489354392),
@@ -36,7 +34,8 @@ class MemberMapperTest {
                         new PostCode(3000,
                                 "Leuven")),
                 "ABC123",
-                LocalDate.now());
+                LocalDate.now(),
+                MembershipLevel.BRONZE);
         MemberMapper memberMapper = new MemberMapper();
         Assertions.assertEquals(member, (memberMapper.createMemberDtoToMember(createMemberDto)));
     }
@@ -52,7 +51,8 @@ class MemberMapperTest {
                         new PostCode(3000,
                                 "Leuven")),
                 "ABC123",
-                LocalDate.now());
+                LocalDate.now(),
+                MembershipLevel.BRONZE);
         MemberDto memberDto = new MemberDto(1,
                 "Test",
                 new PhoneNumber(32, 489354392),
@@ -60,7 +60,8 @@ class MemberMapperTest {
                 new Address("Diestsestraat", 15, new PostCode(3000, "Leuven")),
                 "tombellens@hotmail.com",
                 "ABC123",
-                LocalDate.now());
+                LocalDate.now(),
+                MembershipLevel.BRONZE);
         MemberMapper mapper = new MemberMapper();
         Assertions.assertEquals(memberDto, mapper.memberToMemberDto(member));
     }
@@ -76,7 +77,8 @@ class MemberMapperTest {
                         new PostCode(3000,
                                 "Leuven")),
                 "ABC123",
-                LocalDate.now());
+                LocalDate.now(),
+                MembershipLevel.BRONZE);
         GetAllMemberDto getAllMemberDto = new GetAllMemberDto(1,
                 "Test",
                 new PhoneNumber(32, 489354392),

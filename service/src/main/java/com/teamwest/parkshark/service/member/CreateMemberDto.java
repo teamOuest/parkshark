@@ -1,6 +1,7 @@
 package com.teamwest.parkshark.service.member;
 
 import com.teamwest.parkshark.domain.member.Address;
+import com.teamwest.parkshark.domain.member.MembershipLevel;
 import com.teamwest.parkshark.domain.member.PhoneNumber;
 
 import javax.persistence.*;
@@ -20,8 +21,9 @@ public class CreateMemberDto {
     private String city;
     private String licensePlate;
     private LocalDate registrationDate;
+    private MembershipLevel membershipLevel;
 
-    public CreateMemberDto(String name, int countryCodeMobile, int localNumberMobile, int countryCodeLandline, int localNumberLandline, String email, String streetName, int houseNumber, int postCode, String city, String licensePlate, LocalDate registrationDate) {
+    public CreateMemberDto(String name, int countryCodeMobile, int localNumberMobile, int countryCodeLandline, int localNumberLandline, String email, String streetName, int houseNumber, int postCode, String city, String licensePlate, LocalDate registrationDate, MembershipLevel membershipLevel) {
         this.name = name;
         this.countryCodeMobile = countryCodeMobile;
         this.localNumberMobile = localNumberMobile;
@@ -33,6 +35,7 @@ public class CreateMemberDto {
         this.postCode = postCode;
         this.city = city;
         this.licensePlate = licensePlate;
+        this.membershipLevel = membershipLevel;
     }
 
     public String getName() {
@@ -81,5 +84,9 @@ public class CreateMemberDto {
 
     public LocalDate getRegistrationDate() {
         return registrationDate;
+    }
+
+    public MembershipLevel getMembershipLevel() {
+        return membershipLevel;
     }
 }
