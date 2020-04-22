@@ -53,7 +53,7 @@ public class ParkinglotService {
     private boolean changeAvailableParkingSpots(int parkingLotId, int i) {
         Parkinglot parkinglotToUpdate = parkinglotRepository.findById(parkingLotId)
                 .orElseThrow(() -> new IllegalArgumentException());
-        if (parkinglotToUpdate.getAvailableCapacity() == 0) return false;
+        if (parkinglotToUpdate.getAvailableCapacity() <= 0) return false;
         parkinglotToUpdate.setAvailableCapacity(parkinglotToUpdate.getAvailableCapacity() + (i));
         parkinglotRepository.save(parkinglotToUpdate);
         return true;

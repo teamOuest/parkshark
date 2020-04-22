@@ -2,7 +2,6 @@ package com.teamwest.parkshark.service.parkingspot;
 
 
 import com.teamwest.parkshark.domain.member.MembershipLevel;
-import com.teamwest.parkshark.domain.parkinglot.Parkinglot;
 import com.teamwest.parkshark.domain.parkingspot.ParkingSpotAllocation;
 import com.teamwest.parkshark.infrastructure.member.MemberRepository;
 import com.teamwest.parkshark.infrastructure.parkinglot.ParkinglotRepository;
@@ -34,25 +33,36 @@ public class ParkingSpotAllocationService {
 
 
     public PSallocationDto startPSallocation(StartPSallocationDto startPSallocationDto,int parkinglotID) {
-        assertMemberExists(startPSallocationDto);
-        assertParkinlotExists(parkinglotID);
-        checkIfLicensePlateCanDiffer(startPSallocationDto);
+        checkBasicAssertions(startPSallocationDto, parkinglotID);
+
         ParkingSpotAllocation psa = psAllocationMapper.toParkingSpotAllocation(startPSallocationDto,parkinglotID);
-        updateParkingLotRepository(parkinglotID);
-        return psAllocationMapper.toPSallocationDto(psAllocationRepository.save(psa));
+        updateParkingLotAvailableCapacity(parkinglotID);
+        psAllocationRepository.save(psa);
 
-
+        return saveResponse(psa);
     }
 
-    private void updateParkingLotRepository(int parkinglotID) {
+    private PSallocationDto saveResponse(ParkingSpotAllocation psa) {
+        return psAllocationMapper.toPSallocationDto(
+                psAllocationRepository.findById(
+                        psa.getId())
+                        .get());
+    }
+
+    private void updateParkingLotAvailableCapacity(int parkinglotID) {
         if (!parkinglotService.newParkingSpotAllocation(parkinglotID)) throw new IllegalArgumentException(); //TODO Custom error
+    }
+
+    private void checkBasicAssertions(StartPSallocationDto dto, int parkinglotID) {
+        assertMemberExists(dto);
+        assertParkinlotExists(parkinglotID);
+        checkIfLicensePlateCanDiffer(dto);
     }
 
     private boolean assertParkinlotExists(int parkinglotID) {
         parkinglotRepository.findById(parkinglotID).orElseThrow(IllegalArgumentException::new); //TODO custom exception
         return true;
     }
-
 
     private boolean assertMemberExists(StartPSallocationDto startPSallocationDto) {
         int memberID = startPSallocationDto.getMemberID();
@@ -62,10 +72,8 @@ public class ParkingSpotAllocationService {
 
     private void checkIfLicensePlateCanDiffer(StartPSallocationDto startPSallocationDto) {
         if (!assertGoldMembershipLevel(startPSallocationDto) && !assertLicenseplateCorrespondsToMember(startPSallocationDto) ){
-            throw new IllegalArgumentException("Licence plate");
+            throw new IllegalArgumentException("Licence plate"); //TODO custom exception
         }
-
-
     }
 
     private boolean assertGoldMembershipLevel(StartPSallocationDto startPSallocationDto) {
