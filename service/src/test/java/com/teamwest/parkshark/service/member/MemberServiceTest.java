@@ -1,9 +1,6 @@
 package com.teamwest.parkshark.service.member;
 
-import com.teamwest.parkshark.domain.member.Address;
-import com.teamwest.parkshark.domain.member.Member;
-import com.teamwest.parkshark.domain.member.PhoneNumber;
-import com.teamwest.parkshark.domain.member.PostCode;
+import com.teamwest.parkshark.domain.member.*;
 import com.teamwest.parkshark.infrastructure.member.MemberRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -40,7 +37,8 @@ class MemberServiceTest {
                 3000,
                 "Leuven",
                 "ABC123",
-                LocalDate.now());
+                LocalDate.now(),
+                MembershipLevel.BRONZE);
         Member member = new Member("Test",
                 new PhoneNumber(32,
                         489354392),
@@ -52,7 +50,8 @@ class MemberServiceTest {
                         new PostCode(3000,
                                 "Leuven")),
                 "ABC123",
-                LocalDate.now());
+                LocalDate.now(),
+                MembershipLevel.BRONZE);
         MemberDto expectedMemberDto = new MemberDto(
                 0,
                 "Test",
@@ -67,7 +66,8 @@ class MemberServiceTest {
                                 "Leuven")),
                 "tombellens@hotmail.com",
                 "ABC123",
-                LocalDate.now());
+                LocalDate.now(),
+                MembershipLevel.BRONZE);
 
         when(memberRepository.save(member)).thenReturn(member);
 
@@ -96,7 +96,8 @@ class MemberServiceTest {
                 3000,
                 "Leuven",
                 "ABC123",
-                LocalDate.now());
+                LocalDate.now(),
+                MembershipLevel.BRONZE);
         Member member = new Member("Test",
                 new PhoneNumber(32,
                         489354392),
@@ -108,7 +109,8 @@ class MemberServiceTest {
                         new PostCode(3000,
                                 "Leuven")),
                 "ABC123",
-                LocalDate.now());
+                LocalDate.now(),
+                MembershipLevel.BRONZE);
 
         when(memberRepository.save(member)).thenThrow(ConstraintViolationException.class);
 
@@ -137,7 +139,8 @@ class MemberServiceTest {
                 3000,
                 "Leuven",
                 "ABC123",
-                LocalDate.now());
+                LocalDate.now(),
+                MembershipLevel.BRONZE);
         Member member = new Member("",
                 new PhoneNumber(32,
                         489354392),
@@ -149,7 +152,8 @@ class MemberServiceTest {
                         new PostCode(3000,
                                 "Leuven")),
                 "ABC123",
-                LocalDate.now());
+                LocalDate.now(),
+                MembershipLevel.BRONZE);
 
         when(memberRepository.save(member)).thenThrow(ConstraintViolationException.class);
 
@@ -178,7 +182,8 @@ class MemberServiceTest {
                 3000,
                 "Leuven",
                 "ABC123",
-                LocalDate.now());
+                LocalDate.now(),
+                MembershipLevel.BRONZE);
 
         MemberService memberService = new MemberService(memberRepository, memberMapper);
 

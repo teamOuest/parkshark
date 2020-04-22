@@ -16,7 +16,7 @@ public class MemberMapper {
         PhoneNumber landlineNumber = new PhoneNumber(createMemberDto.getCountryCodeLandline(), createMemberDto.getLocalNumberLandline());
         PostCode postCode = new PostCode(createMemberDto.getPostCode(), createMemberDto.getCity());
         Address address = new Address(createMemberDto.getStreetName(), createMemberDto.getHouseNumber(), postCode);
-        return new Member(createMemberDto.getName(), mobileNumber, landlineNumber, createMemberDto.getEmail(), address, createMemberDto.getLicensePlate(), LocalDate.now());
+        return new Member(createMemberDto.getName(), mobileNumber, landlineNumber, createMemberDto.getEmail(), address, createMemberDto.getLicensePlate(), LocalDate.now(), createMemberDto.getMembershipLevel());
     }
 
 
@@ -29,6 +29,7 @@ public class MemberMapper {
                 savedMember.getAddress(),
                 savedMember.getEmail(),
                 savedMember.getLicensePlate(),
-                savedMember.getRegistrationDate());
+                savedMember.getRegistrationDate(),
+                savedMember.getMembershipLevel());
     }
 }
