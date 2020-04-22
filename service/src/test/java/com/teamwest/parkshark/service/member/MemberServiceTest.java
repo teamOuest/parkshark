@@ -1,9 +1,6 @@
 package com.teamwest.parkshark.service.member;
 
-import com.teamwest.parkshark.domain.member.Address;
-import com.teamwest.parkshark.domain.member.Member;
-import com.teamwest.parkshark.domain.member.PhoneNumber;
-import com.teamwest.parkshark.domain.member.PostCode;
+import com.teamwest.parkshark.domain.member.*;
 import com.teamwest.parkshark.infrastructure.member.MemberRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -13,8 +10,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import javax.validation.ConstraintViolationException;
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.List;
 
 import static org.assertj.core.api.ThrowableAssert.ThrowingCallable;
 import static org.mockito.Mockito.when;
@@ -42,7 +37,8 @@ class MemberServiceTest {
                 3000,
                 "Leuven",
                 "ABC123",
-                LocalDate.now());
+                LocalDate.now(),
+                MembershipLevel.BRONZE);
         Member member = new Member("Test",
                 new PhoneNumber(32,
                         489354392),
@@ -54,7 +50,8 @@ class MemberServiceTest {
                         new PostCode(3000,
                                 "Leuven")),
                 "ABC123",
-                LocalDate.now());
+                LocalDate.now(),
+                MembershipLevel.BRONZE);
         MemberDto expectedMemberDto = new MemberDto(
                 0,
                 "Test",
@@ -69,7 +66,8 @@ class MemberServiceTest {
                                 "Leuven")),
                 "tombellens@hotmail.com",
                 "ABC123",
-                LocalDate.now());
+                LocalDate.now(),
+                MembershipLevel.BRONZE);
 
         when(memberRepository.save(member)).thenReturn(member);
 
@@ -98,7 +96,8 @@ class MemberServiceTest {
                 3000,
                 "Leuven",
                 "ABC123",
-                LocalDate.now());
+                LocalDate.now(),
+                MembershipLevel.BRONZE);
         Member member = new Member("Test",
                 new PhoneNumber(32,
                         489354392),
@@ -110,7 +109,8 @@ class MemberServiceTest {
                         new PostCode(3000,
                                 "Leuven")),
                 "ABC123",
-                LocalDate.now());
+                LocalDate.now(),
+                MembershipLevel.BRONZE);
 
         when(memberRepository.save(member)).thenThrow(ConstraintViolationException.class);
 
@@ -139,14 +139,21 @@ class MemberServiceTest {
                 3000,
                 "Leuven",
                 "ABC123",
-                LocalDate.now());
-        Member member = new Member("Test",
-                new PhoneNumber(32, 489354392),
-                new PhoneNumber(32, 23568463),
-                "tombellenshotmail.com",
-                new Address("Diestsestraat", 15, new PostCode(3000, "Leuven")),
+                LocalDate.now(),
+                MembershipLevel.BRONZE);
+        Member member = new Member("",
+                new PhoneNumber(32,
+                        489354392),
+                new PhoneNumber(32,
+                        23568463),
+                "tombellens@hotmail.com",
+                new Address("Diestsestraat",
+                        15,
+                        new PostCode(3000,
+                                "Leuven")),
                 "ABC123",
-                LocalDate.now());
+                LocalDate.now(),
+        MembershipLevel.BRONZE);
 
         when(memberRepository.save(member)).thenThrow(ConstraintViolationException.class);
 
@@ -175,7 +182,8 @@ class MemberServiceTest {
                 3000,
                 "Leuven",
                 "ABC123",
-                LocalDate.now());
+                LocalDate.now(),
+                MembershipLevel.BRONZE);
 
         MemberService memberService = new MemberService(memberRepository, memberMapper);
 
@@ -185,37 +193,5 @@ class MemberServiceTest {
         //then
         Assertions.assertThatThrownBy(registerMember).isInstanceOf(NoPhoneNumberException.class);
     }
-
-    @Test
-    void getAllMemberDto_ReturnsListOfAllMemberDto() {
-        //given
-        MemberService memberService = new MemberService(memberRepository,memberMapper);
-        Member member1 = new Member("Test",
-                new PhoneNumber(32, 489354392),
-                new PhoneNumber(32, 23568463),
-                "tombellens@hotmail.com",
-                new Address("Diestsestraat", 15, new PostCode(3000, "Leuven")),
-                "ABC123",
-                LocalDate.now());
-        Member member2 = new Member("Tom Waes",
-                new PhoneNumber(32, 489354392),
-                new PhoneNumber(32, 23568463),
-                "tomwaes@hotmail.com",
-                new Address("Diestsestraat", 15, new PostCode(3000, "Leuven")),
-                "ABC123",
-                LocalDate.now());
-        Iterable<Member> iterable = Arrays.asList(member1,member2);
-        when(memberRepository.findAll()).thenReturn(iterable);
-        GetAllMemberDto getAllMemberDto1 = memberMapper.memberToGetAllMemberDto(member1);
-        GetAllMemberDto getAllMemberDto2 = memberMapper.memberToGetAllMemberDto(member2);
-        //when
-        List<GetAllMemberDto> allMembers = memberService.getAllMembers();
-        //then
-        Assertions.assertThat(allMembers).containsExactlyInAnyOrder(getAllMemberDto1,getAllMemberDto2);
-
-    }
-
-
-
 
 }

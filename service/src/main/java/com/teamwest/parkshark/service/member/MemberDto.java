@@ -1,6 +1,7 @@
 package com.teamwest.parkshark.service.member;
 
 import com.teamwest.parkshark.domain.member.Address;
+import com.teamwest.parkshark.domain.member.MembershipLevel;
 import com.teamwest.parkshark.domain.member.PhoneNumber;
 
 import java.time.LocalDate;
@@ -16,8 +17,9 @@ public class MemberDto {
     private String email;
     private String licensePlate;
     private LocalDate registrationDate;
+    private MembershipLevel membershipLevel;
 
-    public MemberDto(int id, String name, PhoneNumber mobileNumber, PhoneNumber landlineNumber, Address address, String email, String licensePlate, LocalDate registrationDate) {
+    public MemberDto(int id, String name, PhoneNumber mobileNumber, PhoneNumber landlineNumber, Address address, String email, String licensePlate, LocalDate registrationDate, MembershipLevel membershipLevel) {
         this.id = id;
         this.name = name;
         this.mobileNumber = mobileNumber;
@@ -26,6 +28,7 @@ public class MemberDto {
         this.email = email;
         this.licensePlate = licensePlate;
         this.registrationDate = registrationDate;
+        this.membershipLevel = membershipLevel;
     }
 
     public int getId() {
@@ -60,6 +63,9 @@ public class MemberDto {
         return registrationDate;
     }
 
+    public MembershipLevel getMembershipLevel() {
+        return membershipLevel;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -72,11 +78,12 @@ public class MemberDto {
                 Objects.equals(address, memberDto.address) &&
                 Objects.equals(email, memberDto.email) &&
                 Objects.equals(licensePlate, memberDto.licensePlate) &&
-                Objects.equals(registrationDate, memberDto.registrationDate);
+                Objects.equals(registrationDate, memberDto.registrationDate) &&
+                Objects.equals(membershipLevel, memberDto.membershipLevel);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, mobileNumber, landlineNumber, address, email, licensePlate, registrationDate);
+        return Objects.hash(name, mobileNumber, landlineNumber, address, email, licensePlate, registrationDate, membershipLevel);
     }
 }

@@ -2,10 +2,13 @@ package com.teamwest.parkshark.api.parkinglot;
 
 import com.teamwest.parkshark.service.parkinglot.CreateParkinglotDto;
 import com.teamwest.parkshark.service.parkinglot.ParkinglotDto;
+import com.teamwest.parkshark.service.parkinglot.ParkinglotMinimalDto;
 import com.teamwest.parkshark.service.parkinglot.ParkinglotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "parkinglot")
@@ -25,7 +28,7 @@ public class ParkinglotController {
     }
 
     @GetMapping(produces="application/json")
-    public String dummy(){
-        return "dummy dummy response";
+    public List<ParkinglotMinimalDto> getAllParkingLots(){
+        return parkinglotService.getAllParkingLots();
     }
 }
