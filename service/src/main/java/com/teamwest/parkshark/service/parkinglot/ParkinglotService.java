@@ -6,6 +6,9 @@ import com.teamwest.parkshark.service.parkinglot.Exceptions.IDnotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class ParkinglotService {
 
@@ -31,5 +34,11 @@ public class ParkinglotService {
                             .orElseThrow(()->new IDnotFoundException(parkingLotID));
 
         return parkinglotMapper.toParkinglotDto(savedParkinglot);
+    }
+
+    public List<ParkinglotMinimalDto> getAllParkingLots() {
+        List<Parkinglot> parkingLots = new ArrayList();
+        parkinglotRepository.findAll().forEach(parkingLots::add);
+        return parkinglotMapper.toParkinglotMinimalDto(parkingLots);
     }
 }
