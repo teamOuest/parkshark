@@ -1,11 +1,7 @@
-package com.teamwest.parkshark.service;
+package com.teamwest.parkshark.service.parkinglot;
 
 import com.teamwest.parkshark.infrastructure.employee.EmployeeRepository;
 import com.teamwest.parkshark.infrastructure.parkinglot.ParkinglotRepository;
-import com.teamwest.parkshark.service.parkinglot.CreateParkinglotDto;
-import com.teamwest.parkshark.service.parkinglot.ParkinglotDto;
-import com.teamwest.parkshark.service.parkinglot.ParkinglotMapper;
-import com.teamwest.parkshark.service.parkinglot.ParkinglotService;
 import org.assertj.core.api.Assertions;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -13,14 +9,6 @@ import org.junit.jupiter.api.Test;
 
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-
-import org.springframework.boot.test.context.SpringBootTest;
-
-import org.springframework.boot.test.mock.mockito.MockBean;
 
 
 
@@ -46,7 +34,6 @@ public class ParkinglotServiceTest {
     void setUp() {
         createParkinglotDto = new CreateParkinglotDto( "Bram Vm", UNDERGROUND_BUILDING, 100, 1, "straat",74,2531, "Antwerpen", 5.5);
         parkinglotDtoTest = new ParkinglotDto(1, "Bram Vm", UNDERGROUND_BUILDING, 100, 1, "straat",74,2531, "Antwerpen", 5.5);
-
     }
 
     @Test
