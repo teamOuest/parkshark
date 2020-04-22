@@ -9,7 +9,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 public class MemberService {
@@ -30,6 +34,12 @@ public class MemberService {
         Member newMember = memberMapper.createMemberDtoToMember(createMemberDto);
         Member savedMember = memberRepository.save(newMember);
         return memberMapper.memberToMemberDto(savedMember);
+    }
+
+    public List<GetAllMemberDto> getAllMembers(){
+        List<Member> memberList = new ArrayList<>();
+        memberRepository.findAll().forEach(memberList::add);
+        return memberList.stream().map(member -> memberMapper.memberToGetAllMemberDto(member)).collect(Collectors.toList());
     }
 
 

@@ -64,4 +64,29 @@ class MemberMapperTest {
         MemberMapper mapper = new MemberMapper();
         Assertions.assertEquals(memberDto, mapper.memberToMemberDto(member));
     }
+
+    @Test
+    void memberToGetAllMemberDto_returnsCorrectDto() {
+        Member member = new Member("Test",
+                new PhoneNumber(32, 489354392),
+                new PhoneNumber(32, 23568463),
+                "tombellens@hotmail.com",
+                new Address("Diestsestraat",
+                        15,
+                        new PostCode(3000,
+                                "Leuven")),
+                "ABC123",
+                LocalDate.now());
+        GetAllMemberDto getAllMemberDto = new GetAllMemberDto(1,
+                "Test",
+                new PhoneNumber(32, 489354392),
+                new PhoneNumber(32, 23568463),
+                "tombellens@hotmail.com",
+                "ABC123",
+                LocalDate.now());
+        MemberMapper mapper = new MemberMapper();
+        Assertions.assertEquals(getAllMemberDto, mapper.memberToGetAllMemberDto(member));
+    }
+
+
 }

@@ -20,13 +20,22 @@ public class MemberMapper {
     }
 
 
-
     public MemberDto memberToMemberDto(Member savedMember) {
         return new MemberDto(savedMember.getId(),
                 savedMember.getName(),
                 savedMember.getMobilePhoneNumber(),
                 savedMember.getLandlinePhoneNumber(),
                 savedMember.getAddress(),
+                savedMember.getEmail(),
+                savedMember.getLicensePlate(),
+                savedMember.getRegistrationDate());
+    }
+
+    public GetAllMemberDto memberToGetAllMemberDto(Member savedMember) {
+        return new GetAllMemberDto(savedMember.getId(),
+                savedMember.getName(),
+                savedMember.getMobilePhoneNumber(),
+                savedMember.getLandlinePhoneNumber(),
                 savedMember.getEmail(),
                 savedMember.getLicensePlate(),
                 savedMember.getRegistrationDate());
