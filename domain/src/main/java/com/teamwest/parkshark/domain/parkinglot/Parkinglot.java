@@ -8,6 +8,7 @@ import javax.persistence.*;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
+@Embeddable
 @Entity
 @Table(name = "parkinglot")
 public class Parkinglot {
