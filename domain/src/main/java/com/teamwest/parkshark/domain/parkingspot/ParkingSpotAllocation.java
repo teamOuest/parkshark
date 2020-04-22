@@ -25,7 +25,7 @@ public class ParkingSpotAllocation {
     @Column(name = "licenseplate")
     private String licensePlate;
 
-    @JoinColumn(name="parkinglot_id")
+    @JoinColumn(name = "parkinglot_id")
     @ManyToOne
     private Parkinglot parkinglot;
 
@@ -40,4 +40,18 @@ public class ParkingSpotAllocation {
 
     public ParkingSpotAllocation() {
     }
+
+    public ParkingSpotAllocation(int id, Member member, String licensePlate, Parkinglot parkinglot, LocalDateTime starttime, LocalDateTime endtime, boolean statusIsActve) {
+        this.id = id;
+        this.member = member;
+        this.licensePlate = licensePlate;
+        this.parkinglot = parkinglot;
+        this.startTime = starttime;
+        this.endTime = endtime;
+        this.statusIsActive = statusIsActve;
+    }
+
+
+
+
 }
