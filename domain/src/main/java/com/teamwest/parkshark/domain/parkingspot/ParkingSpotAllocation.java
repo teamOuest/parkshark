@@ -47,7 +47,31 @@ public class ParkingSpotAllocation {
         this.statusIsActive = statusIsActve;
     }
 
+    public int getId() {
+        return id;
+    }
 
+    public int getMemberID() {
+        return memberID;
+    }
 
+    public String getLicensePlate() {
+        return licensePlate;
+    }
 
+    public int getParkinglotID() {
+        return parkinglotID;
+    }
+
+    public LocalDateTime getStartTime() {
+        return startTime;
+    }
+
+    public LocalDateTime getEndTime() {
+        return endTime;
+    }
+
+    public boolean isStatusIsActive() {
+        return statusIsActive;
+    }
 }

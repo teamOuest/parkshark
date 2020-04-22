@@ -2,10 +2,12 @@ package com.teamwest.parkshark.service.parkingspot;
 
 
 import com.teamwest.parkshark.domain.member.MembershipLevel;
+import com.teamwest.parkshark.domain.parkinglot.Parkinglot;
 import com.teamwest.parkshark.domain.parkingspot.ParkingSpotAllocation;
 import com.teamwest.parkshark.infrastructure.member.MemberRepository;
 import com.teamwest.parkshark.infrastructure.parkinglot.ParkinglotRepository;
 import com.teamwest.parkshark.infrastructure.parkingspot.ParkingSpotAllocationRepository;
+import com.teamwest.parkshark.service.parkinglot.ParkinglotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,14 +19,16 @@ public class ParkingSpotAllocationService {
     MemberRepository memberRepository;
     ParkingSpotAllocationMapper psAllocationMapper;
     ParkinglotRepository parkinglotRepository;
+    ParkinglotService parkinglotService;
 
 
     @Autowired
-    public ParkingSpotAllocationService(ParkingSpotAllocationRepository psAllocationRepository, MemberRepository memberRepository, ParkingSpotAllocationMapper psAllocationMapper, ParkinglotRepository parkinglotRepository) {
+    public ParkingSpotAllocationService(ParkingSpotAllocationRepository psAllocationRepository, MemberRepository memberRepository, ParkingSpotAllocationMapper psAllocationMapper, ParkinglotRepository parkinglotRepository, ParkinglotService parkinglotService) {
         this.psAllocationRepository = psAllocationRepository;
         this.memberRepository = memberRepository;
         this.psAllocationMapper = psAllocationMapper;
         this.parkinglotRepository = parkinglotRepository;
+        this.parkinglotService = parkinglotService;
     }
 
 
@@ -34,9 +38,14 @@ public class ParkingSpotAllocationService {
         assertParkinlotExists(parkinglotID);
         checkIfLicensePlateCanDiffer(startPSallocationDto);
         ParkingSpotAllocation psa = psAllocationMapper.toParkingSpotAllocation(startPSallocationDto,parkinglotID);
-        psAllocationRepository.save(psa);
-        return null; //TODO
+        updateParkingLotRepository(parkinglotID);
+        return psAllocationMapper.toPSallocationDto(psAllocationRepository.save(psa));
 
+
+    }
+
+    private void updateParkingLotRepository(int parkinglotID) {
+        if (!parkinglotService.newParkingSpotAllocation(parkinglotID)) throw new IllegalArgumentException(); //TODO Custom error
     }
 
     private boolean assertParkinlotExists(int parkinglotID) {
@@ -52,8 +61,8 @@ public class ParkingSpotAllocationService {
     }
 
     private void checkIfLicensePlateCanDiffer(StartPSallocationDto startPSallocationDto) {
-        if (!assertGoldMembershipLevel(startPSallocationDto) && assertLicenseplateCorrespondsToMember(startPSallocationDto) ){
-            throw new IllegalArgumentException();
+        if (!assertGoldMembershipLevel(startPSallocationDto) && !assertLicenseplateCorrespondsToMember(startPSallocationDto) ){
+            throw new IllegalArgumentException("Licence plate");
         }
 
 
