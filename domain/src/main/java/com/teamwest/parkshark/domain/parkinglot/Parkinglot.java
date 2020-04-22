@@ -102,4 +102,8 @@ public class Parkinglot {
     public int getAvailableCapacity() {
         return availableCapacity;
     }
+
+    public void setAvailableCapacity(int availableCapacity) {
+        this.availableCapacity = availableCapacity;
+    }
 }

@@ -41,4 +41,21 @@ public class ParkinglotService {
         parkinglotRepository.findAll().forEach(parkingLots::add);
         return parkinglotMapper.toParkinglotMinimalDto(parkingLots);
     }
+
+    public boolean newParkingSpotAllocation(int parkingLotId){
+        return changeAvailableParkingSpots(parkingLotId, -1);
+    }
+
+    public boolean stopParkingSpotAllocation(int parkingLotId){
+        return changeAvailableParkingSpots(parkingLotId, 1);
+    }
+
+    private boolean changeAvailableParkingSpots(int parkingLotId, int i) {
+        Parkinglot parkinglotToUpdate = parkinglotRepository.findById(parkingLotId)
+                .orElseThrow(() -> new IllegalArgumentException());
+        if (parkinglotToUpdate.getAvailableCapacity() == 0) return false;
+        parkinglotToUpdate.setAvailableCapacity(parkinglotToUpdate.getAvailableCapacity() + (i));
+        parkinglotRepository.save(parkinglotToUpdate);
+        return true;
+    }
 }

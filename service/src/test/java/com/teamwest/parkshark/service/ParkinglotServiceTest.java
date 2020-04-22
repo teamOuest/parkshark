@@ -67,4 +67,5 @@ public class ParkinglotServiceTest {
                 .assertThat(parkinglotService.createParkingLot(createParkinglotDto))
                 .isEqualTo(parkinglotDtoTest);
     }
+
 }
