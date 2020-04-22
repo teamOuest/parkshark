@@ -10,6 +10,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import javax.validation.ConstraintViolationException;
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.ThrowableAssert.ThrowingCallable;
 import static org.mockito.Mockito.when;
@@ -171,7 +173,7 @@ class MemberServiceTest {
     void createMember_ifNoPhoneNumberSpecified_throwException() {
 //given
         CreateMemberDto createMemberDto = new CreateMemberDto(
-                "",
+                "Bram",
                 32,
                 0,
                 32,
@@ -193,5 +195,37 @@ class MemberServiceTest {
         //then
         Assertions.assertThatThrownBy(registerMember).isInstanceOf(NoPhoneNumberException.class);
     }
+
+    @Test
+    void getAllMemberDto_ReturnsListOfAllMemberDto() {
+        //given
+        MemberService memberService = new MemberService(memberRepository,memberMapper);
+        Member member1 = new Member("Test",
+                new PhoneNumber(32, 489354392),
+                new PhoneNumber(32, 23568463),
+                "tombellens@hotmail.com",
+                new Address("Diestsestraat", 15, new PostCode(3000, "Leuven")),
+                "ABC123",
+                LocalDate.now(), MembershipLevel.BRONZE);
+        Member member2 = new Member("Tom Waes",
+                new PhoneNumber(32, 489354392),
+                new PhoneNumber(32, 23568463),
+                "tomwaes@hotmail.com",
+                new Address("Diestsestraat", 15, new PostCode(3000, "Leuven")),
+                "ABC123",
+                LocalDate.now(), MembershipLevel.BRONZE);
+        Iterable<Member> iterable = Arrays.asList(member1,member2);
+        when(memberRepository.findAll()).thenReturn(iterable);
+        GetAllMemberDto getAllMemberDto1 = memberMapper.memberToGetAllMemberDto(member1);
+        GetAllMemberDto getAllMemberDto2 = memberMapper.memberToGetAllMemberDto(member2);
+        //when
+        List<GetAllMemberDto> allMembers = memberService.getAllMembers();
+        //then
+        Assertions.assertThat(allMembers).containsExactlyInAnyOrder(getAllMemberDto1,getAllMemberDto2);
+
+    }
+
+
+
 
 }
