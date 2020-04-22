@@ -78,8 +78,6 @@ public class Member{
         return address;
     }
 
-
-
     public String getLicensePlate() {
         return licensePlate;
     }
