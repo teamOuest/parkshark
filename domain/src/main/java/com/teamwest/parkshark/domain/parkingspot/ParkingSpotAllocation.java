@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
-@Table(name = "parkinglot_allocation")
+@Table(name = "parkingspot_allocation")
 public class ParkingSpotAllocation {
 
     @Id
