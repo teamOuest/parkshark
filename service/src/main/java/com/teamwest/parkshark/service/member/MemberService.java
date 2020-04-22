@@ -27,9 +27,6 @@ public class MemberService {
         if(createMemberDto.getLocalNumberMobile()==0 && createMemberDto.getLocalNumberLandline()==0){
             throw new NoPhoneNumberException("No phone number specified.");
         }
-
-
-
         Member newMember = memberMapper.createMemberDtoToMember(createMemberDto);
         Member savedMember = memberRepository.save(newMember);
         return memberMapper.memberToMemberDto(savedMember);

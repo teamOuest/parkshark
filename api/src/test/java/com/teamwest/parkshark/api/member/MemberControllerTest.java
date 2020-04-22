@@ -1,21 +1,13 @@
 package com.teamwest.parkshark.api.member;
 
-import com.teamwest.parkshark.api.parkinglot.ParkinglotController;
 import com.teamwest.parkshark.domain.member.Address;
 import com.teamwest.parkshark.domain.member.PhoneNumber;
 import com.teamwest.parkshark.domain.member.PostCode;
 import com.teamwest.parkshark.service.member.CreateMemberDto;
 import com.teamwest.parkshark.service.member.MemberDto;
-import com.teamwest.parkshark.service.member.MemberService;
-import com.teamwest.parkshark.service.parkinglot.CreateParkinglotDto;
-import com.teamwest.parkshark.service.parkinglot.ParkinglotDto;
-import com.teamwest.parkshark.service.parkinglot.ParkinglotService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -23,11 +15,6 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
 
 import java.time.LocalDate;
-
-import static com.teamwest.parkshark.domain.parkinglot.ParkinglotCategory.ABOVE_GROUND_BUILDING;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class MemberControllerTest {
