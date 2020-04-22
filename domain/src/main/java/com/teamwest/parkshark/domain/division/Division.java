@@ -1,6 +1,7 @@
 package com.teamwest.parkshark.domain.division;
 
 import com.teamwest.parkshark.domain.member.Employee;
+import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
 
@@ -12,18 +13,21 @@ public class Division {
 
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "DIVISION_SEQ" )
-    @SequenceGenerator(name = "DIVISION_SEQ", sequenceName = "division_seq", allocationSize = 1)
+    @SequenceGenerator(name = "DIVISION_SEQ", sequenceName = "division_id_seq", allocationSize = 1)
     private int id;
 
     @Column(name="name")
     private String name;
     @Column(name="originalname")
     private String originalName;
-    @ManyToOne
+
+
     @JoinColumn(name="parentdivision")
-    private Division parentDivision;
     @ManyToOne
+    private Division parentDivision;
+
     @JoinColumn(name="fk_employee_id")
+    @ManyToOne
     private Employee director;
 
     public Division(){}
@@ -34,7 +38,6 @@ public class Division {
         this.parentDivision = parentDivision;
         this.director = director;
     }
-
 
     public String getName() {
         return name;
