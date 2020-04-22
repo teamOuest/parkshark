@@ -77,7 +77,8 @@ class MemberMapperTest {
                         new PostCode(3000,
                                 "Leuven")),
                 "ABC123",
-                LocalDate.now());
+                LocalDate.now(),
+                MembershipLevel.BRONZE);
         GetAllMemberDto getAllMemberDto = new GetAllMemberDto(1,
                 "Test",
                 new PhoneNumber(32, 489354392),

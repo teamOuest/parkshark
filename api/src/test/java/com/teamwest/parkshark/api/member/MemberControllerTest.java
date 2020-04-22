@@ -148,7 +148,8 @@ class MemberControllerTest {
                 3000,
                 "Leuven",
                 "ABC123",
-                LocalDate.now());
+                LocalDate.now(),
+                MembershipLevel.BRONZE);
         this.webTestClient.post()
                 .uri("/members")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -177,7 +178,8 @@ class MemberControllerTest {
                 3000,
                 "Leuven",
                 "ABC123",
-                LocalDate.now());
+                LocalDate.now(),
+                MembershipLevel.BRONZE);
         this.webTestClient.post()
                 .uri("/members")
                 .contentType(MediaType.APPLICATION_JSON)

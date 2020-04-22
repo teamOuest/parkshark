@@ -96,7 +96,8 @@ class MemberServiceTest {
                 3000,
                 "Leuven",
                 "ABC123",
-                LocalDate.now());
+                LocalDate.now(),
+                MembershipLevel.BRONZE);
         Member member = new Member("Test",
                 new PhoneNumber(32,
                         489354392),
@@ -108,7 +109,8 @@ class MemberServiceTest {
                         new PostCode(3000,
                                 "Leuven")),
                 "ABC123",
-                LocalDate.now());
+                LocalDate.now(),
+                MembershipLevel.BRONZE);
 
         when(memberRepository.save(member)).thenThrow(ConstraintViolationException.class);
 
@@ -137,7 +139,8 @@ class MemberServiceTest {
                 3000,
                 "Leuven",
                 "ABC123",
-                LocalDate.now());
+                LocalDate.now(),
+                MembershipLevel.BRONZE);
         Member member = new Member("",
                 new PhoneNumber(32,
                         489354392),
@@ -149,7 +152,8 @@ class MemberServiceTest {
                         new PostCode(3000,
                                 "Leuven")),
                 "ABC123",
-                LocalDate.now());
+                LocalDate.now(),
+        MembershipLevel.BRONZE);
 
         when(memberRepository.save(member)).thenThrow(ConstraintViolationException.class);
 
@@ -178,7 +182,8 @@ class MemberServiceTest {
                 3000,
                 "Leuven",
                 "ABC123",
-                LocalDate.now());
+                LocalDate.now(),
+                MembershipLevel.BRONZE);
 
         MemberService memberService = new MemberService(memberRepository, memberMapper);
 
