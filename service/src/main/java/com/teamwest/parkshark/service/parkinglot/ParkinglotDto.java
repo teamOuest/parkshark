@@ -16,8 +16,9 @@ public class ParkinglotDto {
     private int postCode;
     private String city;
     private double amountInEuro;
+    private int availableCapacity;
 
-    public ParkinglotDto(int id, String name, ParkinglotCategory parkinglotCategory, int capacity, int person_id, String streetName, int houseNumber, int postCode, String city, double amountInEuro) {
+    public ParkinglotDto(int id, String name, ParkinglotCategory parkinglotCategory, int capacity, int person_id, String streetName, int houseNumber, int postCode, String city, double amountInEuro, int availableCapacity) {
         this.id = id;
         this.name = name;
         this.parkinglotCategory = parkinglotCategory;
@@ -28,6 +29,7 @@ public class ParkinglotDto {
         this.postCode = postCode;
         this.city = city;
         this.amountInEuro = amountInEuro;
+        this.availableCapacity = availableCapacity;
     }
 
     public int getId() {
@@ -70,6 +72,10 @@ public class ParkinglotDto {
         return amountInEuro;
     }
 
+    public int getAvailableCapacity() {
+        return availableCapacity;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -84,12 +90,13 @@ public class ParkinglotDto {
                 Objects.equals(name, that.name) &&
                 parkinglotCategory == that.parkinglotCategory &&
                 Objects.equals(streetName, that.streetName) &&
-                Objects.equals(city, that.city);
+                Objects.equals(city, that.city) &&
+                Objects.equals(availableCapacity, that.availableCapacity);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, parkinglotCategory, capacity, person_id, streetName, houseNumber, postCode, city, amountInEuro);
+        return Objects.hash(id, name, parkinglotCategory, capacity, person_id, streetName, houseNumber, postCode, city, amountInEuro, availableCapacity);
     }
 
     @Override
@@ -105,6 +112,7 @@ public class ParkinglotDto {
                 ", postCode=" + postCode +
                 ", city='" + city + '\'' +
                 ", amountInEuro=" + amountInEuro +
+                ", availableCapacity" + availableCapacity +
                 '}';
     }
 }

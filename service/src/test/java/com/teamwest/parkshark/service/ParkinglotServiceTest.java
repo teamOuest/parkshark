@@ -50,8 +50,8 @@ public class ParkinglotServiceTest {
     @BeforeEach
     void setUp() {
         createParkinglotDto = new CreateParkinglotDto( "Bram Vm", UNDERGROUND_BUILDING, 100, 1, "straat",74,2531, "Antwerpen", 5.5);
-        parkinglotDtoTest = new ParkinglotDto(1, "Bram Vm", UNDERGROUND_BUILDING, 100, 1, "straat",74,2531, "Antwerpen", 5.5);
-        parkinglot = new Parkinglot("Bram Vm", UNDERGROUND_BUILDING, 100, employee, new Address("straat",74,new PostCode(2531,"Antwerpen")), new Price(5.5,"EURO"));
+        parkinglotDtoTest = new ParkinglotDto(1, "Bram Vm", UNDERGROUND_BUILDING, 100, 1, "straat",74,2531, "Antwerpen", 5.5,100);
+        parkinglot = new Parkinglot("Bram Vm", UNDERGROUND_BUILDING, 100, employee, new Address("straat",74,new PostCode(2531,"Antwerpen")), new Price(5.5,"EURO"),100);
 
     }
 
@@ -67,4 +67,5 @@ public class ParkinglotServiceTest {
                 .assertThat(parkinglotService.createParkingLot(createParkinglotDto))
                 .isEqualTo(parkinglotDtoTest);
     }
+
 }
