@@ -140,10 +140,10 @@ class MemberServiceTest {
                 "Leuven",
                 "ABC123",
                 LocalDate.now());
-        Member member = new Member("Test",
+        Member member = new Member("",
                 new PhoneNumber(32, 489354392),
                 new PhoneNumber(32, 23568463),
-                "tombellenshotmail.com",
+                "tombellens@hotmail.com",
                 new Address("Diestsestraat", 15, new PostCode(3000, "Leuven")),
                 "ABC123",
                 LocalDate.now());
@@ -164,7 +164,7 @@ class MemberServiceTest {
     void createMember_ifNoPhoneNumberSpecified_throwException() {
 //given
         CreateMemberDto createMemberDto = new CreateMemberDto(
-                "",
+                "Bram",
                 32,
                 0,
                 32,
