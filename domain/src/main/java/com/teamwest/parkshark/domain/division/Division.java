@@ -6,6 +6,8 @@ import javax.persistence.*;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
+@Entity
+@Table(name="division")
 public class Division {
 
     @Id
