@@ -61,7 +61,6 @@ class ParkinglotControllerTest {
 
 
         //Then
-
         assertThat(parkinglotController.createParkinglot(createParkinglotDto)).isEqualTo(parkinglotDto);
 
 
