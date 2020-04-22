@@ -49,4 +49,8 @@ public class Division {
     public Employee getDirector() {
         return director;
     }
+
+    public int getId() {
+        return id;
+    }
 }
