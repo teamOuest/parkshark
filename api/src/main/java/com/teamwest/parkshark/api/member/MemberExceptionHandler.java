@@ -1,6 +1,7 @@
 package com.teamwest.parkshark.api.member;
 
 
+import javax.persistence.RollbackException;
 import javax.validation.ConstraintViolationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,15 +22,19 @@ public class MemberExceptionHandler {
     @ExceptionHandler(DataIntegrityViolationException.class)
     protected void duplicateEntry(DataIntegrityViolationException exception, HttpServletResponse response) throws IOException {
         logger.info(exception.getMessage(), exception);
-        response.sendError(BAD_REQUEST.value(), "boodschap");
+        response.sendError(BAD_REQUEST.value(), "Member already exists: " + exception.getMessage());
     }
 
     @ExceptionHandler(ConstraintViolationException.class)
     protected void invalidInputData(ConstraintViolationException exception, HttpServletResponse response) throws IOException {
         logger.info(exception.getMessage(), exception);
-        response.sendError(BAD_REQUEST.value(), "Here's what you did wrong (you idiot): " + exception.getMessage());
+        response.sendError(BAD_REQUEST.value(), "Something went wrong: " + exception.getMessage());
     }
 
-
+    @ExceptionHandler(RollbackException.class)
+    protected void invalidInputData(RollbackException exception, HttpServletResponse response) throws IOException {
+        logger.info(exception.getMessage(), exception);
+        response.sendError(BAD_REQUEST.value(), "Something went wrong: " + exception.getMessage());
+    }
 
 }

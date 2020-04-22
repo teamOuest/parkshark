@@ -72,7 +72,7 @@ class MemberServiceTest {
         when(memberRepository.save(member)).thenReturn(member);
 
         MemberService memberService = new MemberService(memberRepository, memberMapper);
-        
+
         //when
         MemberDto resultMemberDto = memberService.registerMember(createMemberDto);
 
@@ -82,7 +82,7 @@ class MemberServiceTest {
 
 
     @Test
-    void registerMember_whenEmailNotValid_throwException(){
+    void registerMember_whenEmailNotValid_throwException() {
         //given
         CreateMemberDto createMemberDto = new CreateMemberDto(
                 "Test",
@@ -123,7 +123,7 @@ class MemberServiceTest {
 
 
     @Test
-    void registerMember_whenNoNameSpecified_throwException(){
+    void registerMember_whenNoNameSpecified_throwException() {
         //given
         CreateMemberDto createMemberDto = new CreateMemberDto(
                 "",
@@ -161,6 +161,32 @@ class MemberServiceTest {
         //then
         Assertions.assertThatThrownBy(registerMember).isInstanceOf(ConstraintViolationException.class);
 
+    }
+
+    @Test
+    void createMember_ifNoPhoneNumberSpecified_throwException() {
+//given
+        CreateMemberDto createMemberDto = new CreateMemberDto(
+                "",
+                32,
+                0,
+                32,
+                0,
+                "tombellens@hotmail.com",
+                "Diestsestraat",
+                15,
+                3000,
+                "Leuven",
+                "ABC123",
+                LocalDate.now());
+
+        MemberService memberService = new MemberService(memberRepository, memberMapper);
+
+        //when
+        ThrowingCallable registerMember = () -> memberService.registerMember(createMemberDto);
+
+        //then
+        Assertions.assertThatThrownBy(registerMember).isInstanceOf(NoPhoneNumberException.class);
     }
 
 }
