@@ -26,7 +26,8 @@ public class Division {
     @ManyToOne
     private Division parentDivision;
 
-    @JoinColumn(name="fk_employee_id")
+    @JoinColumn(name="director_id")
+//    @JoinColumn(name="fk_employee_id")
     @ManyToOne
     private Employee director;
 
