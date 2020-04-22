@@ -38,19 +38,23 @@ public class Parkinglot {
     @Embedded
     private Price pricePerHour;
 
+    @Column(name="availablecapacity")
+    private int availableCapacity;
+
 //    TODO private Division division
 
 
     public Parkinglot() {
     }
 
-    public Parkinglot(String name, ParkinglotCategory parkinglotCategory, int capacity, Employee contactPerson, Address address, Price pricePerHour) {
+    public Parkinglot(String name, ParkinglotCategory parkinglotCategory, int capacity, Employee contactPerson, Address address, Price pricePerHour, int availableCapacity) {
         this.name = name;
         this.parkinglotCategory = parkinglotCategory;
         this.capacity = capacity;
         this.contactPerson = contactPerson;
         this.address = address;
         this.pricePerHour = pricePerHour;
+        this.availableCapacity = availableCapacity;
     }
 
     public int getId() {
@@ -93,5 +97,13 @@ public class Parkinglot {
 
     public Price getPricePerHour() {
         return pricePerHour;
+    }
+
+    public int getAvailableCapacity() {
+        return availableCapacity;
+    }
+
+    public void setAvailableCapacity(int availableCapacity) {
+        this.availableCapacity = availableCapacity;
     }
 }

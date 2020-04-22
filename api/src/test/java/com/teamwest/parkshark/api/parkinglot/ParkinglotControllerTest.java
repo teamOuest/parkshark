@@ -54,7 +54,7 @@ class ParkinglotControllerTest {
                                         1,
                                         123,
                                         "city",
-                                        12.5);
+                                        12.5,150);
 
         //When
         when(parkinglotService.createParkingLot(createParkinglotDto)).thenReturn(parkinglotDto);

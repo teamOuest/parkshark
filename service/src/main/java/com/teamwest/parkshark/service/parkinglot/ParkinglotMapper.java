@@ -34,6 +34,7 @@ public class ParkinglotMapper {
                 employee,
                 address,
                new Price(createParkinglotDto.getAmountInEuro(), "EURO")
+        , createParkinglotDto.getCapacity()
         );
     }
 
@@ -54,7 +55,8 @@ public class ParkinglotMapper {
                 parkinglot.getHouseNumber(),
                 parkinglot.getPostCode(),
                 parkinglot.getCity(),
-                parkinglot.getPricePerHour().getAmount()
+                parkinglot.getPricePerHour().getAmount(),
+                parkinglot.getAvailableCapacity()
         );
     }
 
