@@ -9,10 +9,11 @@
 //import static javax.persistence.GenerationType.SEQUENCE;
 //
 //@Entity
-//@Table(name = "parkinglot_allocation")
+//@Table(name = "parkingspot_allocation")
 //public class ParkingSpotAllocation {
 //
 //    @Id
+//    @Column(name = "id")
 //    @GeneratedValue(strategy = SEQUENCE, generator = "PARKINGSPOT_SEQ" )
 //    @SequenceGenerator(name = "PARKINGSPOT_SEQ", sequenceName = "parkingspot_allocation_seq", allocationSize = 1)
 //    private int id;
