@@ -22,8 +22,8 @@ public class DivisionDto {
         this.id = id;
         this.name = name;
         this.originalName = originalName;
-        this.parentDivision = parentDivision;
         this.director = director;
+        this.parentDivision = parentDivision;
     }
 
     public int getId() {
@@ -38,13 +38,15 @@ public class DivisionDto {
         return originalName;
     }
 
+    public EmployeeDto getDirector() {
+        return director;
+    }
+
     public DivisionDto getParentDivision() {
         return parentDivision;
     }
 
-    public EmployeeDto getDirector() {
-        return director;
-    }
+
 
 
     @Override
@@ -61,5 +63,16 @@ public class DivisionDto {
     @Override
     public int hashCode() {
         return Objects.hash(name, originalName, parentDivision, director);
+    }
+
+    @Override
+    public String toString() {
+        return "DivisionDto{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", originalName='" + originalName + '\'' +
+                ", parentDivision=" + parentDivision +
+                ", director=" + director +
+                '}';
     }
 }

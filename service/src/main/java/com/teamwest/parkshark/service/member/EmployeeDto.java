@@ -4,6 +4,8 @@ import com.teamwest.parkshark.domain.member.Address;
 import com.teamwest.parkshark.domain.member.Employee;
 import com.teamwest.parkshark.domain.member.PhoneNumber;
 
+import java.util.Objects;
+
 
 public class EmployeeDto {
 
@@ -45,5 +47,22 @@ public class EmployeeDto {
 
     public Address getAddress() {
         return address;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        EmployeeDto that = (EmployeeDto) o;
+        return Objects.equals(name, that.name) &&
+                Objects.equals(mobilePhoneNumber, that.mobilePhoneNumber) &&
+                Objects.equals(landlinePhoneNumber, that.landlinePhoneNumber) &&
+                Objects.equals(email, that.email) &&
+                Objects.equals(address, that.address);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, mobilePhoneNumber, landlinePhoneNumber, email, address);
     }
 }
