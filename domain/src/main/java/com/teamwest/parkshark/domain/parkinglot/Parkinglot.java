@@ -14,7 +14,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 public class Parkinglot {
 
     @Id
-    @GeneratedValue(strategy = SEQUENCE, generator = "PARKINGLOT_SEQ" )
+    @GeneratedValue(strategy = SEQUENCE, generator = "PARKINGLOT_SEQ")
     @SequenceGenerator(name = "PARKINGLOT_SEQ", sequenceName = "parkinglot_seq", allocationSize = 1)
     private int id;
 
@@ -22,7 +22,7 @@ public class Parkinglot {
     private String name;
 
     @Enumerated(EnumType.STRING)
-    @Column (name = "category")
+    @Column(name = "category")
     private ParkinglotCategory parkinglotCategory;
 
     @Column(name = "capacity")
@@ -38,7 +38,7 @@ public class Parkinglot {
     @Embedded
     private Price pricePerHour;
 
-    @Column(name="availablecapacity")
+    @Column(name = "availablecapacity")
     private int availableCapacity;
 
 //    TODO private Division division
@@ -81,17 +81,19 @@ public class Parkinglot {
         return address;
     }
 
-    public  String getStreetName(){ return address.getStreetName(); }
+    public String getStreetName() {
+        return address.getStreetName();
+    }
 
-    public int getHouseNumber(){
+    public int getHouseNumber() {
         return address.getHouseNumber();
     }
 
-    public int getPostCode(){
+    public int getPostCode() {
         return address.getPostCode().getPostCode();
     }
 
-    public String getCity(){
+    public String getCity() {
         return address.getPostCode().getCity();
     }
 

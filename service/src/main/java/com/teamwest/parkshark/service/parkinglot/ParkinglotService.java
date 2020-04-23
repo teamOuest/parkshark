@@ -21,7 +21,7 @@ public class ParkinglotService {
         this.parkinglotMapper = parkinglotMapper;
     }
 
-    public ParkinglotDto createParkingLot(CreateParkinglotDto createParkinglotDto){
+    public ParkinglotDto createParkingLot(CreateParkinglotDto createParkinglotDto) {
         Parkinglot newParkinglot = parkinglotMapper.toParkinglot(createParkinglotDto);
         Parkinglot savedParkinglot = parkinglotRepository.save(newParkinglot);
         return getCreationResponse(savedParkinglot);
@@ -30,8 +30,8 @@ public class ParkinglotService {
     private ParkinglotDto getCreationResponse(Parkinglot savedParkinglot) {
         int parkingLotID = savedParkinglot.getId();
         savedParkinglot = parkinglotRepository
-                            .findById(parkingLotID)
-                            .orElseThrow(()->new IDnotFoundException(parkingLotID));
+                .findById(parkingLotID)
+                .orElseThrow(() -> new IDnotFoundException(parkingLotID));
 
         return parkinglotMapper.toParkinglotDto(savedParkinglot);
     }
