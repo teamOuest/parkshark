@@ -1,8 +1,8 @@
 package com.teamwest.parkshark.api.member;
 
-import com.teamwest.parkshark.service.member.CreateMemberDto;
-import com.teamwest.parkshark.service.member.GetAllMemberDto;
-import com.teamwest.parkshark.service.member.MemberDto;
+import com.teamwest.parkshark.service.member.dtos.CreateMemberDto;
+import com.teamwest.parkshark.service.member.dtos.GetAllMemberDto;
+import com.teamwest.parkshark.service.member.dtos.MemberDto;
 import com.teamwest.parkshark.service.member.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

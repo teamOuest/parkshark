@@ -5,11 +5,10 @@ import com.teamwest.parkshark.domain.member.Address;
 import com.teamwest.parkshark.domain.member.Employee;
 import com.teamwest.parkshark.domain.member.PhoneNumber;
 import com.teamwest.parkshark.domain.member.PostCode;
+import com.teamwest.parkshark.service.division.dtos.DivisionDto;
 import com.teamwest.parkshark.service.member.EmployeeMapper;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class DivisionMapperTest {
 

@@ -4,13 +4,14 @@ import com.teamwest.parkshark.domain.division.Division;
 import com.teamwest.parkshark.domain.member.Employee;
 import com.teamwest.parkshark.infrastructure.division.DivisionRepository;
 import com.teamwest.parkshark.infrastructure.employee.EmployeeRepository;
+import com.teamwest.parkshark.service.division.dtos.CreateDivisionDto;
+import com.teamwest.parkshark.service.division.dtos.DivisionDto;
 import com.teamwest.parkshark.service.member.Exceptions.NoEmployeeFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service

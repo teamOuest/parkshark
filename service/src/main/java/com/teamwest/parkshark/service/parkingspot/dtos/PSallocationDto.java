@@ -1,4 +1,4 @@
-package com.teamwest.parkshark.service.parkingspot;
+package com.teamwest.parkshark.service.parkingspot.dtos;
 
 import java.time.LocalDateTime;
 

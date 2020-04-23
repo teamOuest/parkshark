@@ -1,7 +1,6 @@
 package com.teamwest.parkshark.service.parkingspot;
 
 
-import com.sun.xml.bind.v2.model.core.ID;
 import com.teamwest.parkshark.domain.member.MembershipLevel;
 import com.teamwest.parkshark.domain.parkingspot.ParkingSpotAllocation;
 import com.teamwest.parkshark.infrastructure.member.MemberRepository;
@@ -10,6 +9,9 @@ import com.teamwest.parkshark.infrastructure.parkingspot.ParkingSpotAllocationRe
 import com.teamwest.parkshark.service.member.Exceptions.NoMemberFoundException;
 import com.teamwest.parkshark.service.parkinglot.Exceptions.IDnotFoundException;
 import com.teamwest.parkshark.service.parkinglot.ParkinglotService;
+import com.teamwest.parkshark.service.parkingspot.dtos.PSallocationDto;
+import com.teamwest.parkshark.service.parkingspot.dtos.StartPSallocationDto;
+import com.teamwest.parkshark.service.parkingspot.dtos.StopPSallocationDto;
 import com.teamwest.parkshark.service.parkingspot.exceptions.AllocationAlreadyStoppedException;
 import com.teamwest.parkshark.service.parkingspot.exceptions.NoAllocationFoundException;
 import com.teamwest.parkshark.service.parkingspot.exceptions.NoMembershipLevlelAuthorizationException;
@@ -17,7 +19,6 @@ import com.teamwest.parkshark.service.parkingspot.exceptions.NoParkingSpotsLeftE
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Service

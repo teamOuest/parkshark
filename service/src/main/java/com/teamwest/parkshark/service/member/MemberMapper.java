@@ -4,6 +4,9 @@ import com.teamwest.parkshark.domain.member.Address;
 import com.teamwest.parkshark.domain.member.Member;
 import com.teamwest.parkshark.domain.member.PhoneNumber;
 import com.teamwest.parkshark.domain.member.PostCode;
+import com.teamwest.parkshark.service.member.dtos.CreateMemberDto;
+import com.teamwest.parkshark.service.member.dtos.GetAllMemberDto;
+import com.teamwest.parkshark.service.member.dtos.MemberDto;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;

@@ -3,6 +3,9 @@ package com.teamwest.parkshark.service.parkinglot;
 import com.teamwest.parkshark.domain.parkinglot.Parkinglot;
 import com.teamwest.parkshark.infrastructure.parkinglot.ParkinglotRepository;
 import com.teamwest.parkshark.service.parkinglot.Exceptions.IDnotFoundException;
+import com.teamwest.parkshark.service.parkinglot.dtos.CreateParkinglotDto;
+import com.teamwest.parkshark.service.parkinglot.dtos.ParkinglotDto;
+import com.teamwest.parkshark.service.parkinglot.dtos.ParkinglotMinimalDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

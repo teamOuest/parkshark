@@ -1,4 +1,4 @@
-package com.teamwest.parkshark.service.member;
+package com.teamwest.parkshark.service.member.Exceptions;
 
 public class NoPhoneNumberException extends RuntimeException {
 

@@ -1,4 +1,4 @@
-package com.teamwest.parkshark.service.division;
+package com.teamwest.parkshark.service.division.dtos;
 
 public class CreateDivisionDto {
 

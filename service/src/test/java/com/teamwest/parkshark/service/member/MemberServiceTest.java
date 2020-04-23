@@ -2,6 +2,10 @@ package com.teamwest.parkshark.service.member;
 
 import com.teamwest.parkshark.domain.member.*;
 import com.teamwest.parkshark.infrastructure.member.MemberRepository;
+import com.teamwest.parkshark.service.member.Exceptions.NoPhoneNumberException;
+import com.teamwest.parkshark.service.member.dtos.CreateMemberDto;
+import com.teamwest.parkshark.service.member.dtos.GetAllMemberDto;
+import com.teamwest.parkshark.service.member.dtos.MemberDto;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

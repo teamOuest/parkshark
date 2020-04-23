@@ -1,8 +1,7 @@
-package com.teamwest.parkshark.service.parkinglot;
+package com.teamwest.parkshark.service.parkinglot.dtos;
 
 import com.teamwest.parkshark.domain.parkinglot.ParkinglotCategory;
 
-import java.math.BigDecimal;
 import java.util.Objects;
 
 public class ParkinglotDto {

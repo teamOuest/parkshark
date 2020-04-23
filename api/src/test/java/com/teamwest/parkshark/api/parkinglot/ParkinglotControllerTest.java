@@ -1,7 +1,7 @@
 package com.teamwest.parkshark.api.parkinglot;
 
-import com.teamwest.parkshark.service.parkinglot.CreateParkinglotDto;
-import com.teamwest.parkshark.service.parkinglot.ParkinglotDto;
+import com.teamwest.parkshark.service.parkinglot.dtos.CreateParkinglotDto;
+import com.teamwest.parkshark.service.parkinglot.dtos.ParkinglotDto;
 import com.teamwest.parkshark.service.parkinglot.ParkinglotService;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

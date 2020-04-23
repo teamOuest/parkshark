@@ -1,6 +1,6 @@
-package com.teamwest.parkshark.service.division;
+package com.teamwest.parkshark.service.division.dtos;
 
-import com.teamwest.parkshark.service.member.EmployeeDto;
+import com.teamwest.parkshark.service.member.dtos.EmployeeDto;
 
 import java.util.Objects;
 

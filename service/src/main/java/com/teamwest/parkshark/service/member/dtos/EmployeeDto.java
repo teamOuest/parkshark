@@ -1,4 +1,4 @@
-package com.teamwest.parkshark.service.member;
+package com.teamwest.parkshark.service.member.dtos;
 
 import com.teamwest.parkshark.domain.member.Address;
 import com.teamwest.parkshark.domain.member.PhoneNumber;

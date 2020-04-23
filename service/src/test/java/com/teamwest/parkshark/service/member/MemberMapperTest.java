@@ -1,6 +1,9 @@
 package com.teamwest.parkshark.service.member;
 
 import com.teamwest.parkshark.domain.member.*;
+import com.teamwest.parkshark.service.member.dtos.CreateMemberDto;
+import com.teamwest.parkshark.service.member.dtos.GetAllMemberDto;
+import com.teamwest.parkshark.service.member.dtos.MemberDto;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

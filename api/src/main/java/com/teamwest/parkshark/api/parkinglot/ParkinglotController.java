@@ -1,13 +1,13 @@
 package com.teamwest.parkshark.api.parkinglot;
 
-import com.teamwest.parkshark.service.parkinglot.CreateParkinglotDto;
-import com.teamwest.parkshark.service.parkinglot.ParkinglotDto;
-import com.teamwest.parkshark.service.parkinglot.ParkinglotMinimalDto;
+import com.teamwest.parkshark.service.parkinglot.dtos.CreateParkinglotDto;
+import com.teamwest.parkshark.service.parkinglot.dtos.ParkinglotDto;
+import com.teamwest.parkshark.service.parkinglot.dtos.ParkinglotMinimalDto;
 import com.teamwest.parkshark.service.parkinglot.ParkinglotService;
-import com.teamwest.parkshark.service.parkingspot.PSallocationDto;
+import com.teamwest.parkshark.service.parkingspot.dtos.PSallocationDto;
 import com.teamwest.parkshark.service.parkingspot.ParkingSpotAllocationService;
-import com.teamwest.parkshark.service.parkingspot.StartPSallocationDto;
-import com.teamwest.parkshark.service.parkingspot.StopPSallocationDto;
+import com.teamwest.parkshark.service.parkingspot.dtos.StartPSallocationDto;
+import com.teamwest.parkshark.service.parkingspot.dtos.StopPSallocationDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

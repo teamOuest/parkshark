@@ -1,7 +1,7 @@
 package com.teamwest.parkshark.api.division;
 
-import com.teamwest.parkshark.service.division.CreateDivisionDto;
-import com.teamwest.parkshark.service.division.DivisionDto;
+import com.teamwest.parkshark.service.division.dtos.CreateDivisionDto;
+import com.teamwest.parkshark.service.division.dtos.DivisionDto;
 import com.teamwest.parkshark.service.division.DivisionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

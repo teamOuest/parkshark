@@ -1,6 +1,8 @@
 package com.teamwest.parkshark.service.parkingspot;
 
 import com.teamwest.parkshark.domain.parkingspot.ParkingSpotAllocation;
+import com.teamwest.parkshark.service.parkingspot.dtos.PSallocationDto;
+import com.teamwest.parkshark.service.parkingspot.dtos.StartPSallocationDto;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;

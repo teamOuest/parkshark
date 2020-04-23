@@ -1,19 +1,17 @@
 package com.teamwest.parkshark.service.member;
 
-import com.teamwest.parkshark.domain.member.PostCode;
 import com.teamwest.parkshark.infrastructure.member.MemberRepository;
 import com.teamwest.parkshark.domain.member.Member;
+import com.teamwest.parkshark.service.member.Exceptions.NoPhoneNumberException;
+import com.teamwest.parkshark.service.member.dtos.CreateMemberDto;
+import com.teamwest.parkshark.service.member.dtos.GetAllMemberDto;
+import com.teamwest.parkshark.service.member.dtos.MemberDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.ConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 @Service
 public class MemberService {
