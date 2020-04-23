@@ -10,6 +10,9 @@ import com.teamwest.parkshark.service.parkinglot.ParkinglotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Service
 public class ParkingSpotAllocationService {
 
@@ -40,6 +43,24 @@ public class ParkingSpotAllocationService {
         psAllocationRepository.save(psa);
 
         return saveResponse(psa);
+    }
+
+    public PSallocationDto stopPSallocation(StopPSallocationDto stopPSallocationDto) {
+        checkIfPSAllocationIsValid(stopPSallocationDto);
+        ParkingSpotAllocation parkingSpotAllocation = psAllocationRepository.findById(stopPSallocationDto.getId())
+                                                            .orElse(null);
+
+        parkingSpotAllocation.setEndTime(LocalDateTime.now());
+        parkingSpotAllocation.setStatusIsActive(false);
+        parkinglotService.stopParkingSpotAllocation(parkingSpotAllocation.getParkinglotID());
+
+        return psAllocationMapper.toPSallocationDto(psAllocationRepository.save(parkingSpotAllocation));
+    }
+
+    private void checkIfPSAllocationIsValid(StopPSallocationDto stopPSallocationDto) {
+        ParkingSpotAllocation parkingSpotAllocation = psAllocationRepository.findById(stopPSallocationDto.getId())
+                                                        .orElseThrow(() -> new IllegalArgumentException("No PSAllocation with that id")); //TODO Custom error
+        if (!parkingSpotAllocation.isStatusIsActive()) throw new IllegalArgumentException("PSAllocation already stopped"); //TODO custom error
     }
 
     private PSallocationDto saveResponse(ParkingSpotAllocation psa) {
