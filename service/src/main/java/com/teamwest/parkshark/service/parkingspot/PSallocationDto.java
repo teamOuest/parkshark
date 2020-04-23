@@ -12,7 +12,7 @@ public class PSallocationDto {
     private boolean active;
 
 
-    public PSallocationDto(int id,int memberID, String licensePlate, int parkinglotID, LocalDateTime startTime, LocalDateTime endTime, boolean active) {
+    public PSallocationDto(int id, int memberID, String licensePlate, int parkinglotID, LocalDateTime startTime, LocalDateTime endTime, boolean active) {
         this.id = id;
         this.memberID = memberID;
         this.licensePlate = licensePlate;

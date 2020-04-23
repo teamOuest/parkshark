@@ -42,11 +42,10 @@ public class ParkingSpotAllocationService {
     }
 
 
-
-    public PSallocationDto startPSallocation(StartPSallocationDto startPSallocationDto,int parkinglotID) {
+    public PSallocationDto startPSallocation(StartPSallocationDto startPSallocationDto, int parkinglotID) {
         checkBasicAssertions(startPSallocationDto, parkinglotID);
 
-        ParkingSpotAllocation psa = psAllocationMapper.toParkingSpotAllocation(startPSallocationDto,parkinglotID);
+        ParkingSpotAllocation psa = psAllocationMapper.toParkingSpotAllocation(startPSallocationDto, parkinglotID);
         updateParkingLotAvailableCapacity(parkinglotID);
         psAllocationRepository.save(psa);
 
@@ -56,7 +55,7 @@ public class ParkingSpotAllocationService {
     public PSallocationDto stopPSallocation(StopPSallocationDto stopPSallocationDto) {
         checkIfPSAllocationIsValid(stopPSallocationDto);
         ParkingSpotAllocation parkingSpotAllocation = psAllocationRepository.findById(stopPSallocationDto.getId())
-                                                            .orElse(null);
+                .orElse(null);
 
         parkingSpotAllocation.setEndTime(LocalDateTime.now());
         parkingSpotAllocation.setStatusIsActive(false);
@@ -67,8 +66,9 @@ public class ParkingSpotAllocationService {
 
     private void checkIfPSAllocationIsValid(StopPSallocationDto stopPSallocationDto) {
         ParkingSpotAllocation parkingSpotAllocation = psAllocationRepository.findById(stopPSallocationDto.getId())
-                                                        .orElseThrow(() -> new NoAllocationFoundException("No PSAllocation with that id"));
-        if (!parkingSpotAllocation.isStatusIsActive()) throw new AllocationAlreadyStoppedException("This allocation was already stopped at " + parkingSpotAllocation.getEndTime());
+                .orElseThrow(() -> new NoAllocationFoundException("No PSAllocation with that id"));
+        if (!parkingSpotAllocation.isStatusIsActive())
+            throw new AllocationAlreadyStoppedException("This allocation was already stopped at " + parkingSpotAllocation.getEndTime());
     }
 
     private PSallocationDto saveResponse(ParkingSpotAllocation psa) {
@@ -79,7 +79,8 @@ public class ParkingSpotAllocationService {
     }
 
     private void updateParkingLotAvailableCapacity(int parkinglotID) {
-        if (!parkinglotService.newParkingSpotAllocation(parkinglotID)) throw new NoParkingSpotsLeftException("There are no parking spots left in parking with id " + parkinglotID);
+        if (!parkinglotService.newParkingSpotAllocation(parkinglotID))
+            throw new NoParkingSpotsLeftException("There are no parking spots left in parking with id " + parkinglotID);
     }
 
     private void checkBasicAssertions(StartPSallocationDto dto, int parkinglotID) {
@@ -89,18 +90,18 @@ public class ParkingSpotAllocationService {
     }
 
     private boolean assertParkinlotExists(int parkinglotID) {
-        parkinglotRepository.findById(parkinglotID).orElseThrow(()-> new IDnotFoundException(parkinglotID));
+        parkinglotRepository.findById(parkinglotID).orElseThrow(() -> new IDnotFoundException(parkinglotID));
         return true;
     }
 
     private boolean assertMemberExists(StartPSallocationDto startPSallocationDto) {
         int memberID = startPSallocationDto.getMemberID();
-        memberRepository.findById(memberID).orElseThrow(() ->new NoMemberFoundException("No member with the id: " + memberID));
+        memberRepository.findById(memberID).orElseThrow(() -> new NoMemberFoundException("No member with the id: " + memberID));
         return true;
     }
 
     private void checkIfLicensePlateCanDiffer(StartPSallocationDto startPSallocationDto) {
-        if (!assertGoldMembershipLevel(startPSallocationDto) && !assertLicenseplateCorrespondsToMember(startPSallocationDto) ){
+        if (!assertGoldMembershipLevel(startPSallocationDto) && !assertLicenseplateCorrespondsToMember(startPSallocationDto)) {
             throw new NoMembershipLevlelAuthorizationException("only gold members can add different licence plates than their own");
         }
     }
@@ -112,7 +113,7 @@ public class ParkingSpotAllocationService {
         return false;
     }
 
-    private boolean assertLicenseplateCorrespondsToMember(StartPSallocationDto startPSallocationDto){
+    private boolean assertLicenseplateCorrespondsToMember(StartPSallocationDto startPSallocationDto) {
         int memberID = startPSallocationDto.getMemberID();
         String memberLicensePlate = memberRepository.findById(memberID).get().getLicensePlate();
         String givenLicensePlate = startPSallocationDto.getLicensePlate();

@@ -7,7 +7,10 @@ import com.teamwest.parkshark.infrastructure.employee.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class DivisionService {
@@ -29,6 +32,12 @@ public class DivisionService {
         Division division = divisionMapper.createDivisionDtoToDivision(createDivisionDto, parentDivision, director);
         Division savedDivision = divisionRepository.save(division);
         return divisionMapper.divisionToDivisionDto(savedDivision);
+    }
+
+    public List<DivisionDto> getAllDivisions(){
+        List<Division> divisionList = new ArrayList<>();
+        divisionRepository.findAll().forEach(divisionList::add);
+        return divisionList.stream().map(division -> divisionMapper.divisionToDivisionDto(division)).collect(Collectors.toList());
     }
 
 }
