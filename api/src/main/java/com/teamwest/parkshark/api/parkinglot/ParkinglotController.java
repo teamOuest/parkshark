@@ -7,6 +7,7 @@ import com.teamwest.parkshark.service.parkinglot.ParkinglotService;
 import com.teamwest.parkshark.service.parkingspot.PSallocationDto;
 import com.teamwest.parkshark.service.parkingspot.ParkingSpotAllocationService;
 import com.teamwest.parkshark.service.parkingspot.StartPSallocationDto;
+import com.teamwest.parkshark.service.parkingspot.StopPSallocationDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -37,10 +38,15 @@ public class ParkinglotController {
         return parkinglotService.getAllParkingLots();
     }
 
-    @PostMapping(consumes="application/json", produces="application/json", path = "{id}/startparkingspotallocation")
+    @PostMapping(consumes="application/json", produces="application/json", path = "{id}/startPSA")
     @ResponseStatus(HttpStatus.CREATED)
     public PSallocationDto startParkingSpotAllocation(@RequestBody StartPSallocationDto startPSallocationDto, @PathVariable(name = "id") int parkinglotID){
         return parkingSpotAllocationService.startPSallocation(startPSallocationDto,parkinglotID);
     }
 
+    @PostMapping(consumes="application/json", produces="application/json", path = "stopPSA")
+    @ResponseStatus(HttpStatus.CREATED)
+    public PSallocationDto stopParkingSpotAllocation(@RequestBody StopPSallocationDto stopPSallocationDto){
+        return parkingSpotAllocationService.stopPSallocation(stopPSallocationDto);
+    }
 }

@@ -19,16 +19,16 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
-@ExtendWith(MockitoExtension.class)
-class DivisionServiceTest {
-
-    @Mock
-    DivisionRepository divisionRepository;
-
-    @Mock
-    EmployeeRepository employeeRepository;
-
-    DivisionMapper divisionMapper;
+//@ExtendWith(MockitoExtension.class)
+//class DivisionServiceTest {
+//
+//    @Mock
+//    DivisionRepository divisionRepository;
+//
+//    @Mock
+//    EmployeeRepository employeeRepository;
+//
+//    DivisionMapper divisionMapper;
 //
 //    @Test
 //    void createDivision_ifValidDivision_returnsCorrectDto() {
@@ -83,6 +83,6 @@ class DivisionServiceTest {
 //        //then
 //        Assertions.assertThat(resultDivisionDto).isEqualTo(expectedDivisionDto);
 //    }
-
-
-}
+//
+//
+//}

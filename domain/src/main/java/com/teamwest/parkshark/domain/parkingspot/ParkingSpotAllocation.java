@@ -74,4 +74,12 @@ public class ParkingSpotAllocation {
     public boolean isStatusIsActive() {
         return statusIsActive;
     }
+
+    public void setEndTime(LocalDateTime endTime) {
+        this.endTime = endTime;
+    }
+
+    public void setStatusIsActive(boolean statusIsActive) {
+        this.statusIsActive = statusIsActive;
+    }
 }
