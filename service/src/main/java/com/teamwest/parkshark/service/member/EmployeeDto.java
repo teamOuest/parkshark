@@ -65,4 +65,17 @@ public class EmployeeDto {
     public int hashCode() {
         return Objects.hash(name, mobilePhoneNumber, landlinePhoneNumber, email, address);
     }
+
+
+    @Override
+    public String toString() {
+        return "EmployeeDto{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", mobilePhoneNumber=" + mobilePhoneNumber +
+                ", landlinePhoneNumber=" + landlinePhoneNumber +
+                ", email='" + email + '\'' +
+                ", address=" + address +
+                '}';
+    }
 }
