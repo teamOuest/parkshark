@@ -4,6 +4,8 @@ import com.teamwest.parkshark.domain.parkingspot.ParkingSpotAllocation;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class ParkingSpotAllocationMapper {
@@ -25,5 +27,12 @@ public class ParkingSpotAllocationMapper {
                 parkingSpotAllocation.getStartTime(),
                 parkingSpotAllocation.getEndTime(),
                 parkingSpotAllocation.isStatusIsActive());
+    }
+
+    public List<PSallocationDto> toPSallocationDto(List<ParkingSpotAllocation> parkingSpotAllocations) {
+        return parkingSpotAllocations.stream()
+                                    .map((parkingSpotAllocation) ->toPSallocationDto(parkingSpotAllocation))
+                                    .collect(Collectors.toList());
+
     }
 }

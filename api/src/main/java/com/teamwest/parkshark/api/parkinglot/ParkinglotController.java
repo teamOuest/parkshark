@@ -49,4 +49,9 @@ public class ParkinglotController {
     public PSallocationDto stopParkingSpotAllocation(@RequestBody StopPSallocationDto stopPSallocationDto){
         return parkingSpotAllocationService.stopPSallocation(stopPSallocationDto);
     }
+
+    @GetMapping(produces = "application/json", path="/parkingspots")
+    public List<PSallocationDto> getAllParkingLotAllocations(){
+        return parkingSpotAllocationService.getAllParkingLotAllocations();
+    }
 }

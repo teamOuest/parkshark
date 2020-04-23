@@ -19,6 +19,8 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ParkingSpotAllocationService {
@@ -118,5 +120,11 @@ public class ParkingSpotAllocationService {
         String memberLicensePlate = memberRepository.findById(memberID).get().getLicensePlate();
         String givenLicensePlate = startPSallocationDto.getLicensePlate();
         return memberLicensePlate.equals(givenLicensePlate);
+    }
+
+    public List<PSallocationDto> getAllParkingLotAllocations() {
+        List<ParkingSpotAllocation> parkingSpotAllocations = new ArrayList<>();
+        psAllocationRepository.findAllByOrderByStartTime().forEach(parkingSpotAllocations::add);
+        return psAllocationMapper.toPSallocationDto(parkingSpotAllocations);
     }
 }
