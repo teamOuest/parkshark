@@ -50,11 +50,11 @@ public class ParkinglotService {
         return changeAvailableParkingSpots(parkingLotId, 1);
     }
 
-    private boolean changeAvailableParkingSpots(int parkingLotId, int i) {
+    private boolean changeAvailableParkingSpots(int parkingLotId, int capacityChange) {
         Parkinglot parkinglotToUpdate = parkinglotRepository.findById(parkingLotId)
                 .orElseThrow(() -> new IllegalArgumentException());
         if (parkinglotToUpdate.getAvailableCapacity() <= 0) return false;
-        parkinglotToUpdate.setAvailableCapacity(parkinglotToUpdate.getAvailableCapacity() + (i));
+        parkinglotToUpdate.setAvailableCapacity(parkinglotToUpdate.getAvailableCapacity() + (capacityChange));
         parkinglotRepository.save(parkinglotToUpdate);
         return true;
     }
