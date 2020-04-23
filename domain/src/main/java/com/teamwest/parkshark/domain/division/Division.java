@@ -1,7 +1,6 @@
 package com.teamwest.parkshark.domain.division;
 
 import com.teamwest.parkshark.domain.member.Employee;
-import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
 

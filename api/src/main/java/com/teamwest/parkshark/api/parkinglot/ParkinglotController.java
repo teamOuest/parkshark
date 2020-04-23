@@ -27,26 +27,26 @@ public class ParkinglotController {
         this.parkingSpotAllocationService = parkingSpotAllocationService;
     }
 
-    @PostMapping(consumes="application/json", produces="application/json")
+    @PostMapping(consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public ParkinglotDto createParkinglot(@RequestBody CreateParkinglotDto createParkinglotDto){
+    public ParkinglotDto createParkinglot(@RequestBody CreateParkinglotDto createParkinglotDto) {
         return parkinglotService.createParkingLot(createParkinglotDto);
     }
 
-    @GetMapping(produces="application/json")
-    public List<ParkinglotMinimalDto> getAllParkingLots(){
+    @GetMapping(produces = "application/json")
+    public List<ParkinglotMinimalDto> getAllParkingLots() {
         return parkinglotService.getAllParkingLots();
     }
 
-    @PostMapping(consumes="application/json", produces="application/json", path = "{id}/startPSA")
+    @PostMapping(consumes = "application/json", produces = "application/json", path = "{id}/startPSA")
     @ResponseStatus(HttpStatus.CREATED)
-    public PSallocationDto startParkingSpotAllocation(@RequestBody StartPSallocationDto startPSallocationDto, @PathVariable(name = "id") int parkinglotID){
-        return parkingSpotAllocationService.startPSallocation(startPSallocationDto,parkinglotID);
+    public PSallocationDto startParkingSpotAllocation(@RequestBody StartPSallocationDto startPSallocationDto, @PathVariable(name = "id") int parkinglotID) {
+        return parkingSpotAllocationService.startPSallocation(startPSallocationDto, parkinglotID);
     }
 
-    @PostMapping(consumes="application/json", produces="application/json", path = "stopPSA")
+    @PostMapping(consumes = "application/json", produces = "application/json", path = "stopPSA")
     @ResponseStatus(HttpStatus.CREATED)
-    public PSallocationDto stopParkingSpotAllocation(@RequestBody StopPSallocationDto stopPSallocationDto){
+    public PSallocationDto stopParkingSpotAllocation(@RequestBody StopPSallocationDto stopPSallocationDto) {
         return parkingSpotAllocationService.stopPSallocation(stopPSallocationDto);
     }
 }

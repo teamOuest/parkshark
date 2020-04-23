@@ -1,22 +1,16 @@
 package com.teamwest.parkshark.service.division;
 
-import com.teamwest.parkshark.domain.division.Division;
-import com.teamwest.parkshark.domain.member.Employee;
 import com.teamwest.parkshark.service.member.EmployeeDto;
 
-import javax.persistence.*;
-
 import java.util.Objects;
-
-import static javax.persistence.GenerationType.SEQUENCE;
 
 public class DivisionDto {
 
     private int id;
     private String name;
     private String originalName;
-    private DivisionDto parentDivision;
     private EmployeeDto director;
+    private DivisionDto parentDivision;
 
     public DivisionDto(int id, String name, String originalName, DivisionDto parentDivision, EmployeeDto director) {
         this.id = id;

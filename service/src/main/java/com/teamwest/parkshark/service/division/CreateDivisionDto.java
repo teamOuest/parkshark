@@ -1,8 +1,5 @@
 package com.teamwest.parkshark.service.division;
 
-import com.teamwest.parkshark.domain.division.Division;
-import com.teamwest.parkshark.domain.member.Employee;
-
 public class CreateDivisionDto {
 
     private String name;

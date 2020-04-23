@@ -1,10 +1,8 @@
 package com.teamwest.parkshark.api.division;
 
-import com.teamwest.parkshark.api.member.MemberExceptionHandler;
 import com.teamwest.parkshark.service.member.Exceptions.NoEmployeeFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -21,6 +19,6 @@ public class DivisionExceptionHandler {
     @ExceptionHandler(NoEmployeeFoundException.class)
     protected void duplicateEntry(NoEmployeeFoundException exception, HttpServletResponse response) throws IOException {
         logger.info(exception.getMessage(), exception);
-        response.sendError(BAD_REQUEST.value(),  exception.getMessage());
+        response.sendError(BAD_REQUEST.value(), exception.getMessage());
     }
 }

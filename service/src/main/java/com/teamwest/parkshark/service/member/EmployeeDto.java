@@ -1,7 +1,6 @@
 package com.teamwest.parkshark.service.member;
 
 import com.teamwest.parkshark.domain.member.Address;
-import com.teamwest.parkshark.domain.member.Employee;
 import com.teamwest.parkshark.domain.member.PhoneNumber;
 
 import java.util.Objects;
