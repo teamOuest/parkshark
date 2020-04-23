@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "parkinglot")
+@RequestMapping(path = "parkinglots")
 public class ParkinglotController {
 
     ParkinglotService parkinglotService;
