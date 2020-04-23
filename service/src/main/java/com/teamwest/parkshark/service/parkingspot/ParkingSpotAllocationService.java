@@ -1,12 +1,19 @@
 package com.teamwest.parkshark.service.parkingspot;
 
 
+import com.sun.xml.bind.v2.model.core.ID;
 import com.teamwest.parkshark.domain.member.MembershipLevel;
 import com.teamwest.parkshark.domain.parkingspot.ParkingSpotAllocation;
 import com.teamwest.parkshark.infrastructure.member.MemberRepository;
 import com.teamwest.parkshark.infrastructure.parkinglot.ParkinglotRepository;
 import com.teamwest.parkshark.infrastructure.parkingspot.ParkingSpotAllocationRepository;
+import com.teamwest.parkshark.service.member.Exceptions.NoMemberFoundException;
+import com.teamwest.parkshark.service.parkinglot.Exceptions.IDnotFoundException;
 import com.teamwest.parkshark.service.parkinglot.ParkinglotService;
+import com.teamwest.parkshark.service.parkingspot.exceptions.AllocationAlreadyStoppedException;
+import com.teamwest.parkshark.service.parkingspot.exceptions.NoAllocationFoundException;
+import com.teamwest.parkshark.service.parkingspot.exceptions.NoMembershipLevlelAuthorizationException;
+import com.teamwest.parkshark.service.parkingspot.exceptions.NoParkingSpotsLeftException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +25,7 @@ public class ParkingSpotAllocationService {
 
 
     ParkingSpotAllocationRepository psAllocationRepository;
+
     MemberRepository memberRepository;
     ParkingSpotAllocationMapper psAllocationMapper;
     ParkinglotRepository parkinglotRepository;
@@ -59,8 +67,8 @@ public class ParkingSpotAllocationService {
 
     private void checkIfPSAllocationIsValid(StopPSallocationDto stopPSallocationDto) {
         ParkingSpotAllocation parkingSpotAllocation = psAllocationRepository.findById(stopPSallocationDto.getId())
-                                                        .orElseThrow(() -> new IllegalArgumentException("No PSAllocation with that id")); //TODO Custom error
-        if (!parkingSpotAllocation.isStatusIsActive()) throw new IllegalArgumentException("PSAllocation already stopped"); //TODO custom error
+                                                        .orElseThrow(() -> new NoAllocationFoundException("No PSAllocation with that id"));
+        if (!parkingSpotAllocation.isStatusIsActive()) throw new AllocationAlreadyStoppedException("This allocation was already stopped at " + parkingSpotAllocation.getEndTime());
     }
 
     private PSallocationDto saveResponse(ParkingSpotAllocation psa) {
@@ -71,7 +79,7 @@ public class ParkingSpotAllocationService {
     }
 
     private void updateParkingLotAvailableCapacity(int parkinglotID) {
-        if (!parkinglotService.newParkingSpotAllocation(parkinglotID)) throw new IllegalArgumentException(); //TODO Custom error
+        if (!parkinglotService.newParkingSpotAllocation(parkinglotID)) throw new NoParkingSpotsLeftException("There are no parking spots left in parking with id " + parkinglotID);
     }
 
     private void checkBasicAssertions(StartPSallocationDto dto, int parkinglotID) {
@@ -81,19 +89,19 @@ public class ParkingSpotAllocationService {
     }
 
     private boolean assertParkinlotExists(int parkinglotID) {
-        parkinglotRepository.findById(parkinglotID).orElseThrow(IllegalArgumentException::new); //TODO custom exception
+        parkinglotRepository.findById(parkinglotID).orElseThrow(()-> new IDnotFoundException(parkinglotID));
         return true;
     }
 
     private boolean assertMemberExists(StartPSallocationDto startPSallocationDto) {
         int memberID = startPSallocationDto.getMemberID();
-        memberRepository.findById(memberID).orElseThrow(IllegalArgumentException::new); //TODO custom exception
+        memberRepository.findById(memberID).orElseThrow(() ->new NoMemberFoundException("No member with the id: " + memberID));
         return true;
     }
 
     private void checkIfLicensePlateCanDiffer(StartPSallocationDto startPSallocationDto) {
         if (!assertGoldMembershipLevel(startPSallocationDto) && !assertLicenseplateCorrespondsToMember(startPSallocationDto) ){
-            throw new IllegalArgumentException("Licence plate"); //TODO custom exception
+            throw new NoMembershipLevlelAuthorizationException("only gold members can add different licence plates than their own");
         }
     }
 
