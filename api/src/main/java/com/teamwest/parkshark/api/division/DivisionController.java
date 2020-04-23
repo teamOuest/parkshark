@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(path="divisions")
 public class DivisionController {
@@ -22,6 +24,12 @@ public class DivisionController {
     @ResponseStatus(HttpStatus.CREATED)
     public DivisionDto createDivision(@RequestBody CreateDivisionDto createDivisionDto){
         return divisionService.createDivision(createDivisionDto);
+    }
+
+    @GetMapping(produces = "application/json")
+    @ResponseStatus(HttpStatus.OK)
+    public List<DivisionDto> getAllDivisions(){
+        return divisionService.getAllDivisions();
     }
 
 }

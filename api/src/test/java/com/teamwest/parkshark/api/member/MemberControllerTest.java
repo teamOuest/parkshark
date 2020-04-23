@@ -118,7 +118,7 @@ class MemberControllerTest {
 
     @Test
     @DirtiesContext(methodMode = DirtiesContext.MethodMode.BEFORE_METHOD)
-    void getAllMembers_ifNoMembers_returnsEmptyList(){
+    void getAllMembers_ifNoMembers_returnsEmptyList() {
         WebTestClient.ResponseSpec response = this.webTestClient.get()
                 .uri("/members")
                 .exchange();
@@ -135,7 +135,7 @@ class MemberControllerTest {
 
     @Test
     @DirtiesContext
-    void getAllMembers_returnsCorrectMembers(){
+    void getAllMembers_returnsCorrectMembers() {
         CreateMemberDto createMemberDto1 = new CreateMemberDto(
                 "Test",
                 32,

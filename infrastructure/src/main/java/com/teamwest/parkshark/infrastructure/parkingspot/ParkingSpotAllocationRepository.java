@@ -7,5 +7,5 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Transactional
-public interface ParkingSpotAllocationRepository extends CrudRepository<ParkingSpotAllocation,Integer> {
+public interface ParkingSpotAllocationRepository extends CrudRepository<ParkingSpotAllocation, Integer> {
 }

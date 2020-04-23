@@ -13,7 +13,7 @@ public class ParkingSpotAllocation {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = SEQUENCE, generator = "PARKINGSPOT_SEQ" )
+    @GeneratedValue(strategy = SEQUENCE, generator = "PARKINGSPOT_SEQ")
     @SequenceGenerator(name = "PARKINGSPOT_SEQ", sequenceName = "parkingspot_allocation_seq", allocationSize = 1)
     private int id;
 

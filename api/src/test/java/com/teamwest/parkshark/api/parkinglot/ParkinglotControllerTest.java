@@ -17,16 +17,15 @@ import static org.mockito.Mockito.when;
 
 class ParkinglotControllerTest {
 
-//TODO
+    //TODO
     @Nested
     @SpringBootTest
-    class BehaviourTests{
+    class BehaviourTests {
         @Mock
         private ParkinglotService parkinglotService;
 
         @InjectMocks
         private ParkinglotController parkinglotController;
-
 
 
         @Test
@@ -37,7 +36,6 @@ class ParkinglotControllerTest {
         @Test
         void createParkinglotBehaviourTest() {
             //Given
-
             CreateParkinglotDto createParkinglotDto = new CreateParkinglotDto(
                     "name",
                     ABOVE_GROUND_BUILDING,
@@ -48,7 +46,6 @@ class ParkinglotControllerTest {
                     123,
                     "city",
                     12.5);
-
             ParkinglotDto parkinglotDto = new ParkinglotDto(
                     111,
                     "name",
@@ -59,24 +56,20 @@ class ParkinglotControllerTest {
                     1,
                     123,
                     "city",
-                    12.5,150);
+                    12.5, 150);
 
             //When
             when(parkinglotService.createParkingLot(createParkinglotDto)).thenReturn(parkinglotDto);
 
-
             //Then
             assertThat(parkinglotController.createParkinglot(createParkinglotDto)).isEqualTo(parkinglotDto);
-
-
         }
     }
 
     @Nested
     @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
     @DirtiesContext
-    class EndpointTests{
-
+    class EndpointTests {
     }
 
 }
