@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200") //makes it possible to accept requests from Angular
 @RestController
 @RequestMapping(path = "parkinglots")
 public class ParkinglotController {
