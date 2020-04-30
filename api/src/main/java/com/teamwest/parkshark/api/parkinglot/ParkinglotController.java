@@ -38,6 +38,11 @@ public class ParkinglotController {
         return parkinglotService.getAllParkingLots();
     }
 
+    @GetMapping(produces = "application/json", path = "/{id}")
+    public ParkinglotMinimalDto getParkingLotById(@PathVariable(name = "id") int parkinglotID) {
+        return parkinglotService.getParkingLotById(parkinglotID);
+    }
+
     @PostMapping(consumes = "application/json", produces = "application/json", path = "{id}/startPSA")
     @ResponseStatus(HttpStatus.CREATED)
     public PSallocationDto startParkingSpotAllocation(@RequestBody StartPSallocationDto startPSallocationDto, @PathVariable(name = "id") int parkinglotID) {
