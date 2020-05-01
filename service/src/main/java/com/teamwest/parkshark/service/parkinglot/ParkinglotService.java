@@ -63,8 +63,8 @@ public class ParkinglotService {
         return true;
     }
 
-    public ParkinglotMinimalDto getParkingLotById(int parkinglotID) {
+    public ParkinglotDto getParkingLotById(int parkinglotID) {
         Parkinglot parkinglot = parkinglotRepository.findById(parkinglotID).get();
-        return parkinglotMapper.toParkinglotMinimalDto(parkinglot);
+        return parkinglotMapper.toParkinglotDto(parkinglot);
     }
 }

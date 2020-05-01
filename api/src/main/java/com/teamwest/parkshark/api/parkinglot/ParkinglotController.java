@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 //@CrossOrigin(origins = "http://localhost:4200") //makes it possible to accept requests from Angular
-@CrossOrigin//(origins = "https://angular-parkshark.herokuapp.com") //makes it possible to accept requests from Angular
+@CrossOrigin//default value is accept all
 @RestController
 @RequestMapping(path = "parkinglots")
 public class ParkinglotController {
@@ -41,7 +41,7 @@ public class ParkinglotController {
     }
 
     @GetMapping(produces = "application/json", path = "/{id}")
-    public ParkinglotMinimalDto getParkingLotById(@PathVariable(name = "id") int parkinglotID) {
+    public ParkinglotDto getParkingLotById(@PathVariable(name = "id") int parkinglotID) {
         return parkinglotService.getParkingLotById(parkinglotID);
     }
 
