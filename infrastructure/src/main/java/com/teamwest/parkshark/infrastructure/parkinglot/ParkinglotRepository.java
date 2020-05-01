@@ -10,4 +10,5 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface ParkinglotRepository extends CrudRepository<Parkinglot, Integer> {
 
+    Iterable<Parkinglot> findAllByOrderByIdAsc();
 }

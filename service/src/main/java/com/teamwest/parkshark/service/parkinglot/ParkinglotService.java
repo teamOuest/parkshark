@@ -41,7 +41,8 @@ public class ParkinglotService {
 
     public List<ParkinglotMinimalDto> getAllParkingLots() {
         List<Parkinglot> parkingLots = new ArrayList<>();
-        parkinglotRepository.findAll().forEach(parkingLots::add);
+//        parkinglotRepository.findAll().forEach(parkingLots::add);
+        parkinglotRepository.findAllByOrderByIdAsc().forEach(parkingLots::add);
         return parkinglotMapper.toParkinglotMinimalDto(parkingLots);
     }
 
